@@ -1,0 +1,20 @@
+body{
+    background-color:#3cb371;
+}
+
+.box{
+    position: relative;
+    background-color:#F0F8FF;
+    width: 800px;
+    height: 300px;
+    margin: 140px auto 0px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 30px;
+    padding: 10px;
+}
+
+#message{
+    text-align: center;
+    font-family: Arial;
+
+}
