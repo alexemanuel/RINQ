@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns:th = "https://www.thymeleaf.org" lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>RINQ</title>
+
+    <link href= "bootstrap/bootstrap.min.css" rel= "stylesheet" type= "text/css" />
+    <script type= "text/javascript" src= "javascript/jquery-3.4.1.min.js"></script>
+    <script type= "text/javascript" src= "javascript/bootstrap.min.js"></script>
+    <script type= "text/javascript" src= "javascript/jquery.mask.min.js"></script>
+    <script type= "text/javascript">
+
+        $(document).ready(function(){
+            $("#id_CPF").mask("000.000.000-00")
+        })
+
+        </script>
+            <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/login_erro.css">
+</head>
+<body>
+
+<form th:action = "@{/login}" th:object = "${usuario}" th:method = "post">
+    <div id = "login_box">
+        <div id = "login_box_label">
+               Login
+            <div class = "input-div" id = "imput_usuario">
+                <input name = "CPF" class = "form-control" id = "id_CPF" required= "required" maxlength="11" placeholder= "Informe seu CPF" type="text" 
+                	   onkeypress = "return event.charCode >= 48 && event.charCode <= 57" th:field = "*{CPF}">  
+            </div>
+            
+            <div class = "input-div" id = "imput_senha">
+                <input name = "nome" class = "form-control"  id = "id_senha" required = "required" minlength = "6" placeholder = "Informe sua senha" type = "password"
+                		th:field = "*{password}"/>
+            </div>
+            
+            <div id = "logo">
+                <img src = "images/logo.png" style = "width:120px;height:120px;"/>
+            </div>
+            
+            <div id = "esqueci_senha">
+                <a href = esqueci_senha target = "_blank">Esqueci minha senha</a>
+            </div>
+            
+            <div id = "botoes">
+                <input type = "submit"  class = "btn btn-success" value = "Login" id = "botao" />
+            </div>
+            
+            <div id = "lembrar_senha"><input type = "checkbox"/>Mantenha-me conectado</div>
+            <div id = "erro">Dados inválidos</div>
+            </div>
+    </div>
+</form> 
+
+
+</body>
+</html>
