@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+
+
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/registro.css">
+
+    <script src="/src/main/resources/static/javascript/validation.js" defer></script>
+    <script src="/src/main/resources/static/javascript/options.js" defer></script>
+    <script src="/src/main/resources/static/javascript/numbersAndMask.js" defer></script>
+    <script src="/src/main/resources/static/javascript/toggleDisplay.js" defer></script>
+
+    <title>Cadastro</title>
+
+
+<body>
+
+    <form th:method="post" id="form_cadastro" th:action="@{register}" th:object="${docente}">
+
+        <h1>CADASTRO</h1>
+
+        <div class="choices">
+
+            <input type="radio" name="radiobtn" id="choice">
+            <label for="choice">Docente</label>
+
+            <input type="radio" name="radiobtn" id="choice2">
+            <label for="choice2">Discente</label>
+        </div>
+
+        <fieldset>
+            <legend>
+                <h2>Dados</h2>
+            </legend>
+
+            <div class="field">
+                <label for="name">Nome</label>
+                <input type="text" name="name" required="required">
+                <span class="error"></span>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" required="required">
+                    <span class="error" ></span>
+                </div>
+
+                <div class="field">
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf" required="required" maxlength="14"
+                        onkeydown="javascript: fMasc(this, mCPF);" onkeypress=" return OnlyNumbers(event)">
+                    <span class="error"></span>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" id = "password" required="required">
+                    <span class="error"></span>
+                </div>
+
+                <div class="field">
+                    <label for="senha2">Verifique sua senha</label>
+                    <input type="password" name="confirma_senha" id= "confirm_password" required="required">
+                    <span class="error" ></span>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="field">
+                    <label for="cadeira">Cadeira</label>
+                    <select name="cadeira" required>
+                        <option value="">Selecione uma cadeira</option>
+                    </select>
+                    <span class="error"></span>
+                </div>
+
+                <div class="field">
+                    <label for="curso">Curso</label>
+                    <select name="curso" required>
+                        <option value="">Selecione um curso</option>
+                    </select>
+                    <span class="error "></span>
+                </div>
+            </div>
+
+            <div class="field" id="element">
+                <label for="cpf">SIAPE</label>
+                <input type="text" id="siape" name="cpf" required="required" maxlength="7"
+                onkeypress=" return OnlyNumbers(event)">
+                <span class="error"></span>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+
+        </fieldset>
+
+
+    </form>
+    
+</body>
+</head>
+
+</html>
