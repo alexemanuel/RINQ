@@ -1,55 +1,63 @@
 package com.rinq.models;
 
-import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@Entity(name = "User_")
-public class User implements UserDetails{	
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	protected String login;
-	protected String password;
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Usuario{	
 
-	public User() {}
+	private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+	@Id
+	private String cpf;
+	private String password;
+	private String name;
+	private String email;
+	
+	public Usuario() {}
+	
+	public Usuario(DataTransferObject OTD) {
+		this.setCpf(OTD.getCpf());
+		this.setPassword(OTD.getPassword());
+		this.setName(OTD.getName());
+		this.setEmail(OTD.getEmail());
 	}
-
-	@Override
+	
+	public String getCpf() {
+		return cpf;
+	}
+	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
 	public String getPassword() {
-		return this.password;
+		return password;
+	}
+	
+	public void setPassword(String password) {		
+		this.password = passwordEncoder.encode(password);
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getEmail() {
+		return email;
 	}
 
-	@Override
-	public String getUsername() {
-		return this.login;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return true;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
