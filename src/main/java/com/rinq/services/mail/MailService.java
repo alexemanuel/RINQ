@@ -23,22 +23,24 @@ public class MailService {
     SpringMailConfig springMailConfig;
     
     private static final String HTML_PATH = "src/main/resources/templates";
+    private static final String RESET_PASSWORD_BASE_URL = "/mudar_senha";
     
-    public void sendWelcomeEmail(String recipientName, String recipientEmail) throws MessagingException, IOException {
+    public void sendMail(String recipientName, String recipientEmail, String subject, String fileName, String token) throws MessagingException, IOException {
     	
     	TemplateEngine templateEngine = springMailConfig.emailTemplateEngine();
-    	
-    	final String fileName = "email-inlineimage.html";
     	
         final MimeMessage mimeMessage = this.mailSender.createMimeMessage();
         final MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
         
-        mimeMessageHelper.setSubject("Bem-Vindo ao RINQ");
+        mimeMessageHelper.setSubject(subject);
         mimeMessageHelper.setFrom("rinq@gmail.com");
         mimeMessageHelper.setTo(recipientEmail);
-
+        
+        final String resetPasswordURL = String.format("%s?token=%", RESET_PASSWORD_BASE_URL, token);
+        
         final Context context = new Context();
         context.setVariable("name", recipientName);
+        context.setVariable("resetPasswordURl", resetPasswordURL);
         
         final String htmlContent = getFileContent(HTML_PATH + "/" + fileName);
         

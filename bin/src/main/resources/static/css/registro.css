@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap");
+:root{
+    --title-color:#466175;
+    --primary-color: #1CDF74;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+ html,
+ body {
+     height: 100vh;
+     font-family: Roboto;
+     text-rendering: optimizeLegibility;
+     -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    color: var(--title-color);
+}
+
+body{
+    background-color:#3cb371;
+}
+
+    form {
+        background-color: #f5f5f5;
+        width: 90%;
+        max-width: 730px;
+        height: 100vh;
+        box-sizing: border-box;
+        
+        padding: 64px;
+        margin: 40px auto;
+        border-radius: 28px;
+        
+    }
+    
+    form h1 {
+        font-size: 26px;
+    }
+    
+    .choices {
+        margin-top: 20px;
+        color: var(--tittle-color);
+    }
+    
+    form fieldset {
+        margin-top: 20px;
+    
+        border: 0;
+    }
+    
+    form legend {
+        margin-bottom: 24px;
+    }
+    
+    form legend h2 {
+        font-size: 20px;
+    }
+    
+    form .field {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    
+        margin-bottom: 25px;
+    }
+    
+    form .field-group {
+        display: flex;
+    }
+    
+    form input, form select {
+        border: 0;
+        padding: 13px 24px;
+        font-size: 16px;
+    
+        border-radius: 8px;
+        border-bottom: 1px solid var(--primary-color);
+        outline: none;
+
+    }
+    
+    form label {
+        font-size: 14px;
+        margin-bottom: 10px;
+        
+    }
+    
+    form .field-group .field + .field {
+        margin-left: 24px;
+    
+    }
+    
+    form button {
+        width: 250px;
+        height: 56px;
+        
+        background-color: var(--primary-color);
+        border-radius: 8px;
+    
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+    
+        border: none;
+    
+        margin-top: 40px;
+        transition: background-color 400ms;
+    
+    }
+    
+    form button:hover {
+        background-color: #2fb86a;
+    }
+    
+    /* span.error{
+        display: flex;
+
+        padding: 0;
+
+        background-color: rgba(255, 0, 0, 0.2);
+    }
+
+    form span.error.active {
+        border: 1px solid red;
+        
+    } */

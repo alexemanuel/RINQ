@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>trocar_senha</title>
+    <link rel="stylesheet" type="text/css" href="/css/trocar_senha.css">
+    <link href= "bootstrap/bootstrap.min.css" rel= "stylesheet" type= "text/css" />
+    <script type= "text/javascript" src= "javascript/jquery-3.4.1.min.js"></script>
+    <script type= "text/javascript" src= "javascript/bootstrap.min.js"></script>
+    <script type= "text/javascript" src= "javascript/jquery.mask.min.js"></script>
+    <script type= "text/javascript">
+    </script>
+
+
+
+</head>
+<body>
+<form method="post" action="login.html">
+    <div id="troca_senha_box">
+        <div id="troca_box_label">
+            Redefinir senha
+            <div class="input-div" id="imput_nova_senha">
+                <input type="password" class= "form-control"  name="nome" minlength="6" maxlength="11"required= "required" placeholder="Nova senha"/>
+            </div>
+            <div class="input-div" id="imput_confirmar_senha">
+                <input type="password" class= "form-control"  name="nome" minlength="6" maxlength="11" required= "required" placeholder="Confirmar nova senha"/>
+            </div>
+            <div id="botoes">
+                 <input type="submit" value="Enviar" class="btn btn-success" id="botao" >
+                </div>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>

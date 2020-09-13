@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.rinq.models.DataTransferObject;
 import com.rinq.models.Discente;
 import com.rinq.models.Docente;
+import com.rinq.models.PasswordResetToken;
+import com.rinq.models.Usuario;
 import com.rinq.repositories.DiscenteRepository;
 import com.rinq.repositories.DocenteRepository;
+import com.rinq.repositories.PasswordResetTokenRepository;
 import com.rinq.repositories.UsuarioRepository;
 import com.rinq.services.mail.MailService;
+import com.rinq.services.token.PasswordResetTokenService;
 
 @Controller
 public class RegisterController {
@@ -31,6 +35,8 @@ public class RegisterController {
 	DocenteRepository docenteRepository;
 	@Autowired
 	DiscenteRepository discenteRepository;
+	@Autowired
+	PasswordResetTokenRepository passwordResetTokenRepository;
 	
 	
 	@GetMapping("/cadastro")
@@ -45,7 +51,7 @@ public class RegisterController {
 		String newUserRole = DTO.getRole();
 		
 		if(usuarioRepository.existsByCpf(DTO.getCpf())) {
-			System.out.println("Já existe");
+			return "cadastro";
 		
 		}else {
 			
@@ -58,8 +64,10 @@ public class RegisterController {
 				discenteRepository.save(newUser);
 			}
 			
-			mailService.sendWelcomeEmail(DTO.getName(), DTO.getEmail());
-			System.out.println("Entrou");
+			PasswordResetToken passwordResetToken = PasswordResetTokenService.createToken(new Usuario(DTO));
+			passwordResetTokenRepository.save(passwordResetToken);
+			
+			mailService.sendMail(DTO.getName(), DTO.getEmail(), "Bem-Vindo", "welcome_email.html", passwordResetToken.getToken());
 		}
 		
 		model.addAttribute("DTO", new DataTransferObject());

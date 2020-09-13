@@ -1,0 +1,30 @@
+body{
+        background-color:#3cb371
+        }
+        #loguin_box{
+            background: #F0F8FF;
+            width:800px;
+            height:250px;
+            margin:100px auto 0px;
+            border-radius:5px;
+            box-shadow: 0px 0px 30px;
+            overflow:hidden;
+        }
+        #loguin_box_label{
+            background:#DCDCDC;
+            width:800px;
+            height:50px;
+            text-align:center ;
+            font: bold 20px/45px sans-serif ;
+            border-bottom: 1px solid #C0C0C0;
+            box-shadow: 1px 0px 3px #A9A9A9;
+            color:#555555;
+
+        }
+        #cadastrar_docente{
+            position: absolute;
+            top:220px;
+            margin-left:315px;
+            font: bold 15px/45px sans-serif ;
+
+        }
