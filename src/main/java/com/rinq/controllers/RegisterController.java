@@ -37,7 +37,7 @@ public class RegisterController {
 	public String registerForm(Model model){
 		
 		model.addAttribute("DTO", new DataTransferObject());
-		return "register";
+		return "cadastro";
 	}
 	
 	@PostMapping("/cadastro")
@@ -64,6 +64,6 @@ public class RegisterController {
 		
 		model.addAttribute("DTO", new DataTransferObject());
 		
-		return "register"; 
+		return "cadastro"; 
 	}
 }

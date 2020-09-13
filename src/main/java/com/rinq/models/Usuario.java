@@ -19,6 +19,7 @@ public class Usuario{
 	private String password;
 	private String name;
 	private String email;
+	private String role;
 	
 	public Usuario() {}
 	
@@ -27,6 +28,7 @@ public class Usuario{
 		this.setPassword(OTD.getPassword());
 		this.setName(OTD.getName());
 		this.setEmail(OTD.getEmail());
+		this.setRole(OTD.getRole());
 	}
 	
 	public String getCpf() {
@@ -59,5 +61,13 @@ public class Usuario{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

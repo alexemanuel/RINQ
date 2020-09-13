@@ -7,13 +7,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserDetailsImpl implements UserDetails{
 	private static final long serialVersionUID = 1L;
-
-	private String userName;
-	private String password;
+	
+	private Usuario user;
 	
 	public UserDetailsImpl(Usuario user) {
-		this.userName = user.getCpf();
-		this.password = user.getPassword();
+		this.user = user;
 	}
 	
 	@Override
@@ -23,12 +21,12 @@ public class UserDetailsImpl implements UserDetails{
 
 	@Override
 	public String getPassword() {
-		return this.password;
+		return this.user.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return this.userName;
+		return this.user.getCpf();
 	}
 
 	@Override
@@ -50,5 +48,12 @@ public class UserDetailsImpl implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
-
+	
+	public Usuario getUser() {
+		return this.user;
+	}
+	
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
 }
