@@ -12,8 +12,8 @@ public class Discente extends Usuario{
 	
 	public Discente(DataTransferObject OTD) {
 		super(OTD);
-		this.setProgram(OTD.getProgram());
-		this.setCourse(OTD.getCourse());
+		this.program = OTD.getProgram();
+		this.course = OTD.getCourse();
 	}
 
 	public String getCourse() {

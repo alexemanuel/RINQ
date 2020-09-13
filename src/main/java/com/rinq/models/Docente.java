@@ -14,8 +14,8 @@ public class Docente extends Usuario{
 	
 	public Docente(DataTransferObject ODT) {
 		super(ODT);
-		this.setProgram(ODT.getCourse());
-		this.setCourse(ODT.getProgram());
+		this.program = ODT.getCourse();
+		this.course = ODT.getProgram();
 	}
 
 	public String getCourse() {

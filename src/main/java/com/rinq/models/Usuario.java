@@ -24,11 +24,10 @@ public class Usuario{
 	public Usuario() {}
 	
 	public Usuario(DataTransferObject OTD) {
-		this.setCpf(OTD.getCpf());
-		this.setPassword(OTD.getPassword());
-		this.setName(OTD.getName());
-		this.setEmail(OTD.getEmail());
-		this.setRole(OTD.getRole());
+		this.cpf   = OTD.getCpf();
+		this.name  = OTD.getName();
+		this.email = OTD.getEmail();
+		this.role  = OTD.getRole();
 	}
 	
 	public String getCpf() {
