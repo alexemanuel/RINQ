@@ -2,9 +2,16 @@ package com.rinq.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.rinq.models.User;
+import com.rinq.models.Usuario;
 
-public interface UserRepository extends CrudRepository<User, String>{
+public interface UsuarioRepository extends CrudRepository<Usuario, String>{
 	
-	User findByLogin(String login);
+	Usuario findByCpf(String cpf);
+	Usuario findByEmail(String email);
+	
+	boolean existsByCpf(String cpf);
+	
+	
+	
+	 
 }
