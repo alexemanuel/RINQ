@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th = "https://www.thymeleaf.org" lang = "pt-br">
 
 	<head>
     	<title>HOME</title>
@@ -25,12 +25,11 @@
 					<img src="/images/rinq.png" style="width:120px;height:50px;"/>
 				</div>
 				<div id="sair">
-					<a href="home.html">
-						<img src="/images/sair.png" style="width:40px;height:40px;"/>
-					</a>
+				<form action = "/logout" method = "post">
+						<input type = "image" src = "/images/sair.png" alt = "Submit" style="width:40px;height:40px;">
+						<input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">			
+					</form>
 				</div>
-
-
 	        </div>       
 	    </div>
 	</body>

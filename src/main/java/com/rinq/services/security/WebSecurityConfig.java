@@ -1,4 +1,4 @@
-package com.rinq.security;
+package com.rinq.services.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -26,9 +26,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.formLogin()
 				.loginPage("/login")
 				.permitAll()
+				.defaultSuccessUrl("/home")
 				.and()
 			.logout()
 				.permitAll()
+				.logoutSuccessUrl("/login?logout")
 				.and()
 			.rememberMe()
 				.userDetailsService(userDetailsService);
