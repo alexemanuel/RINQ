@@ -4,6 +4,15 @@
 <head>
     <meta charset="utf-8">
     
+    <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+    <link href= "css/bootstrap.min.css" rel= "stylesheet" type= "text/css" />
+    <script type= "text/javascript" src= "js/jquery-3.4.1.min.js"></script>
+    <script type= "text/javascript" src= "js/bootstrap.min.js"></script>
+    <script type= "text/javascript" src= "js/jquery.mask.min.js"></script>
+
+    
+
+
     <link rel="stylesheet" type="text/css" href="/src/main/resources/static/css/registro.css">
 
     <script src="/src/main/resources/static/javascript/validation.js" defer></script>
@@ -89,12 +98,12 @@
 
             <div class="field" id="element">
                 <label for="cpf">SIAPE</label>
-                <input type="text" id="siape" name="cpf" disabled required="required" maxlength="7"
+                <input type="text" id="siape" name="cpf" required="required" maxlength="7"
                     onkeypress=" return OnlyNumbers(event)">
                 <span class="error"></span>
             </div>
 
-            <button type="submit">Cadastrar</button>
+            <button type="submit" >Cadastrar</button>
 
         </fieldset>
 

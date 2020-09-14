@@ -17,121 +17,118 @@ a{
 
  html,
  body {
-     height: 100vh;
+     height: 150vh;
      font-family: Roboto;
      text-rendering: optimizeLegibility;
      -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4 {
-    color: var(--title-color);
+    color: #555555;
 }
 
 body{
     background-color:#3cb371;
+} 
+
+form {
+    background-color: #F0F8FF;
+    width: 90%;
+    max-width: 730px;
+    height: 820px;
+    box-sizing: border-box;
+    
+    padding: 64px;
+    margin: 40px auto;
+    
+    border-radius:5px;
+    box-shadow: 0px 0px 30px;
+    
 }
 
-    form {
-        background-color: #f5f5f5;
-        width: 90%;
-        max-width: 730px;
-        height: 100vh;
-        box-sizing: border-box;
-        
-        padding: 64px;
-        margin: 40px auto;
-        border-radius: 28px;
-        
-    }
-    
-    form h1 {
-        font-size: 26px;
-    }
-    
-    .choices {
-        margin-top: 20px;
-        color: var(--tittle-color);
-    }
-    
-    form fieldset {
-        margin-top: 20px;
-    
-        border: 0;
-    }
-    
-    form legend {
-        margin-bottom: 24px;
-    }
-    
-    form legend h2 {
-        font-size: 20px;
-    }
-    
-    form .field {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-    
-        margin-bottom: 25px;
-    }
-    
-    form .field-group {
-        display: flex;
-    }
-    
-    form input, form select {
-        border: 0;
-        padding: 13px 24px;
-        font-size: 16px;
-    
-        border-radius: 8px;
-        border-bottom: 1px solid var(--primary-color);
-        outline: none;
+form h1 {
+    font-size: 26px;
+}
 
-    }
-    
-    form label {
-        font-size: 14px;
-        margin-bottom: 10px;
-        
-    }
-    
-    form .field-group .field + .field {
-        margin-left: 24px;
-    
-    }
-    
-    form button {
-        width: 250px;
-        height: 56px;
-        
-        background-color: var(--primary-color);
-        border-radius: 8px;
-    
-        color: white;
-        font-weight: bold;
-        font-size: 16px;
-    
-        border: none;
-    
-        margin-top: 40px;
-        transition: background-color 400ms;
-    
-    }
-    
-    form button:hover {
-        background-color: #2fb86a;
-    }
-    
-    /* span.error{
-        display: flex;
+.choices {
+    margin-top: 20px;
+    color: var(--tittle-color);
+}
 
-        padding: 0;
+form fieldset {
+    margin-top: 20px;
 
-        background-color: rgba(255, 0, 0, 0.2);
-    }
+    border: 0;
+}
 
-    form span.error.active {
-        border: 1px solid red;
-        
-    } */
+form legend {
+    margin-bottom: 24px;
+}
+
+form legend h2 {
+    font-size: 20px;
+}
+
+form .field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 25px;
+}
+
+form .field-group {
+    display: flex;
+}
+
+form input, form select {
+    /* border: 0; */
+    padding: 7px 18px;
+    font-size: 16px;
+    color:#aeaeae;
+    border-radius:3px;
+    border:1px solid #bfc4c6;
+    outline: none;
+
+}
+
+input:hover  {
+    /* background-color:#e0f1fc; */
+    border-color:#7dc6dd
+}
+form label {
+    font-size: 14px;
+    margin-bottom: 10px;
+    
+}
+
+form .field-group .field + .field {
+    margin-left: 24px;
+
+}
+
+form button {
+    width:100px;
+    font: bold 17px/45px;
+    padding: 10px;
+
+    color: white;
+    background-color: var(--primary-color) ;
+    border-radius: 4px;
+    border: none;
+}
+
+
+
+/* span.error{
+    display: flex;
+
+    padding: 0;
+
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+form span.error.active {
+    border: 1px solid red;
+    
+} */

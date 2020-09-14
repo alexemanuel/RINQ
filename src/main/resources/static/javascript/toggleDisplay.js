@@ -27,7 +27,7 @@
 //     getElement.style.display = 'flex';
 // }
 
-
+document.getElementById('element').style.display = 'none';
 
 document.getElementById('choice').addEventListener('change', () => {
     if (document.getElementById('choice').checked) {
