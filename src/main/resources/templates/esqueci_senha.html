@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="https://www.thymeleaf.org" lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>esqueci_senha</title>
-
 
     <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
     <link href= "css/bootstrap.min.css" rel= "stylesheet" type= "text/css" />
@@ -14,24 +13,21 @@
 
 </head>
 <body>
-<form>
+<form th:method = "post" th:action = "@{esqueci_senha}" th:object = "${DTO}">
     <div id="senha_box">
         <div id="loguin_box_label">
-            Digite seu e-mail:         
+            Digite seu e-mail:                     
             <div class="input-div" id="imput_usuario">
-                <input type="email"  name="nome"  class= "form-control"  required= "required"  placeholder="Informe seu e-mail" />
+                <input type="email"  name="nome"  class= "form-control"  required= "required"  placeholder="Informe seu e-mail" th:field = "*{email}"/>
             </div>
-
             <div id="botoes">
                 <input type="submit"  class= "btn btn-success" value="Enviar" id="botao">
-
-                </div>
-
             </div>
         </div>
+    </div>
+    <input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">
+    	
 </form>
-
-
  <script>
     $('#imput_cod').css('display','none');
     $('#text1').css('display','none');

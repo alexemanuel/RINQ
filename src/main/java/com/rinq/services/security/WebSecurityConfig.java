@@ -22,6 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.authorizeRequests()
 				.antMatchers("/esqueci_senha").permitAll()
+				.antMatchers("/trocar_senha").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()

@@ -37,6 +37,8 @@ public class RegisterController {
 	DiscenteRepository discenteRepository;
 	@Autowired
 	PasswordResetTokenRepository passwordResetTokenRepository;
+	@Autowired
+	PasswordResetTokenService passwordResetTokenService;
 	
 	
 	@GetMapping("/cadastro")
@@ -64,7 +66,7 @@ public class RegisterController {
 				discenteRepository.save(newUser);
 			}
 			
-			PasswordResetToken passwordResetToken = PasswordResetTokenService.createToken(new Usuario(DTO));
+			PasswordResetToken passwordResetToken = passwordResetTokenService.createToken(new Usuario(DTO));
 			passwordResetTokenRepository.save(passwordResetToken);
 			
 			mailService.sendMail(DTO.getName(), DTO.getEmail(), "Bem-Vindo", "welcome_email.html", passwordResetToken.getToken());

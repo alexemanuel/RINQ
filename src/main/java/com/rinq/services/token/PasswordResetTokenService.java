@@ -4,28 +4,29 @@ import java.util.Calendar;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rinq.models.PasswordResetToken;
 import com.rinq.models.Usuario;
 import com.rinq.repositories.PasswordResetTokenRepository;
 
+@Service
 public class PasswordResetTokenService {
-	
+		
 	@Autowired
-	static
 	PasswordResetTokenRepository passwordResetTokenRepository;
 	
-	public static PasswordResetToken createToken(Usuario user) {
+	public PasswordResetToken createToken(Usuario user) {
 		String tokenValue = UUID.randomUUID().toString();
 		PasswordResetToken passwordResetTokenObj = new PasswordResetToken(tokenValue, user);
 		
 		return passwordResetTokenObj;
 	}
 	
-	public static boolean checkTokenValidity(String tokenValue) {
-		Calendar calendar = Calendar.getInstance();
+	public boolean checkTokenValidity(String tokenValue) {
+		Calendar calendar = Calendar.getInstance();		
 		PasswordResetToken passwordResetTokenObj = passwordResetTokenRepository.findByToken(tokenValue);
 		
-		return passwordResetTokenObj != null || calendar.before(passwordResetTokenObj.getExperyDate());
+		return passwordResetTokenObj != null && calendar.before(passwordResetTokenObj.getExperyDate());
 	}
 }

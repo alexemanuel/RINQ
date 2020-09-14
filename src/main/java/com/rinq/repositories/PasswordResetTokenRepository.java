@@ -8,4 +8,6 @@ public interface PasswordResetTokenRepository extends CrudRepository<PasswordRes
 	
 	PasswordResetToken findByToken(String tokenValue); 
 	
+	void deleteByToken(String tokenValue);
+	
 }

@@ -22,8 +22,8 @@ public class MailService {
     @Autowired
     SpringMailConfig springMailConfig;
     
-    private static final String HTML_PATH = "src/main/resources/templates";
-    private static final String RESET_PASSWORD_BASE_URL = "/mudar_senha";
+    private static final String HTML_PATH = "src/main/resources/templates/mail";
+    private static final String RESET_PASSWORD_BASE_URL = "/trocar_senha";
     
     public void sendMail(String recipientName, String recipientEmail, String subject, String fileName, String token) throws MessagingException, IOException {
     	
@@ -36,7 +36,7 @@ public class MailService {
         mimeMessageHelper.setFrom("rinq@gmail.com");
         mimeMessageHelper.setTo(recipientEmail);
         
-        final String resetPasswordURL = String.format("%s?token=%", RESET_PASSWORD_BASE_URL, token);
+        final String resetPasswordURL = String.format("%s?token=%s", RESET_PASSWORD_BASE_URL, token);
         
         final Context context = new Context();
         context.setVariable("name", recipientName);
