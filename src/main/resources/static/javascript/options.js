@@ -1,21 +1,21 @@
 function generateSubjects() {
-    const subjectSelect = document.querySelector("select[name=cadeira]")
+	const subjectSelect = document.getElementById("cadeira")
 
-    var subjects = ["Engenharia de Software", "POO", "Arq de Software"];
+    var subjects = ["Engenharia de Software", "POO", "Arquitetura de Software"];
 
     for( const subject of subjects ) {
-        subjectSelect.innerHTML += ` <option value = "" > "${subject}" </option> `
-    }
+        subjectSelect.innerHTML += ` <option th:value = "${subject}" > ${subject} </option> `
+    }	
 }
 generateSubjects()
 
 function generateCourses() {
-    const courseSelect = document.querySelector("select[name=curso]")
+	const courseSelect = document.getElementById("curso")
 
-    var courses = ["Administração", "ADS", "Msi"];
+    var courses = ["Administração", "ADS", "MSI"];
 
     for( const course of courses ) {
-        courseSelect.innerHTML += ` <option value = "" > "${course}" </option> `
+        courseSelect.innerHTML += ` <option th:value = "${course}" > ${course} </option> `
     }
 }
 generateCourses()

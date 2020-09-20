@@ -11,6 +11,7 @@ public interface UsuarioRepository extends CrudRepository<Usuario, String>{
 	
 	boolean existsByCpf(String cpf);
 	
+	void removeByCpf(String cpf);
 	
 	
 	 

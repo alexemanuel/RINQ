@@ -53,11 +53,11 @@ public class RegisterController {
 		String newUserRole = DTO.getRole();
 		
 		if(usuarioRepository.existsByCpf(DTO.getCpf())) {
-			return "cadastro";
+			return "redirect:/cadastro?error";
 		
 		}else {
 			
-			if(newUserRole.equals("Docente")) {
+			if(newUserRole.equals("docente")) {
 				Docente newUser = new Docente(DTO);
 				docenteRepository.save(newUser);
 			
@@ -69,11 +69,10 @@ public class RegisterController {
 			PasswordResetToken passwordResetToken = passwordResetTokenService.createToken(new Usuario(DTO));
 			passwordResetTokenRepository.save(passwordResetToken);
 			
-			mailService.sendMail(DTO.getName(), DTO.getEmail(), "Bem-Vindo", "welcome_email.html", passwordResetToken.getToken());
+			mailService.sendMail(DTO.getName(), DTO.getEmail(), "Bem-Vindo ao RINQ", "welcome_email.html", passwordResetToken.getToken());
 		}
 		
 		model.addAttribute("DTO", new DataTransferObject());
-		
 		return "cadastro"; 
 	}
 }

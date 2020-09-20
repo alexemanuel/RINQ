@@ -8,14 +8,14 @@ import javax.persistence.PrimaryKeyJoinColumn;
 public class Docente extends Usuario{
 	
 	private String course;
-	private String program;
+	private String subject;
 	
 	public Docente() {}
 	
 	public Docente(DataTransferObject ODT) {
 		super(ODT);
-		this.program = ODT.getCourse();
-		this.course = ODT.getProgram();
+		this.course  = ODT.getCourse();
+		this.subject = ODT.getSubject();
 	}
 
 	public String getCourse() {
@@ -26,11 +26,11 @@ public class Docente extends Usuario{
 		this.course = course;
 	}
 
-	public String getProgram() {
-		return program;
+	public String getSubject() {
+		return subject;
 	}
 
-	public void setProgram(String program) {
-		this.program = program;
+	public void setSubject(String subject) {
+		this.course = subject;
 	}
 }

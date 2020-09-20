@@ -7,8 +7,10 @@ public class DataTransferObject {
 	private String cpf;
 	private String password;
 	private String course;
-	private String program;
+	private String subject;
 	private String role;
+	private String siape;
+	private PasswordResetToken token;
 
 	public String getEmail() {
 		return email;
@@ -34,12 +36,12 @@ public class DataTransferObject {
 		this.course = course;
 	}
 
-	public String getProgram() {
-		return program;
+	public String getSubject() {
+		return subject;
 	}
 
-	public void setProgram(String program) {
-		this.program = program;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	public String getName() {
@@ -64,5 +66,21 @@ public class DataTransferObject {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getSiape() {
+		return siape;
+	}
+
+	public void setSiape(String siape) {
+		this.siape = siape;
+	}
+
+	public PasswordResetToken getToken() {
+		return token;
+	}
+
+	public void setToken(PasswordResetToken passwordResetToken) {
+		this.token = passwordResetToken;
 	}	
 }

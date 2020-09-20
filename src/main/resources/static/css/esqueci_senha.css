@@ -56,3 +56,13 @@ body{
         width:10px;
          font: bold 17px/45px sans-serif ;
         }
+	#erro{
+         position: absolute;
+         top:250px;
+         left: 430px;
+         width:500px;
+         margin-left: 145px;
+         font:normal 12px sans-serif;
+         color:#ee3a1f;
+         }
+        

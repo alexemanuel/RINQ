@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.rinq.models.Usuario;
 import com.rinq.repositories.UsuarioRepository;
 
+
 @Controller	
 public class HomeController {
 	
@@ -17,7 +18,7 @@ public class HomeController {
 	
 	@GetMapping({"/", "/home"})
 	public String home(Principal principal){
-		Usuario authenticatedUser= usuarioReposiory.findByCpf(principal.getName());
+		Usuario authenticatedUser = usuarioReposiory.findByCpf(principal.getName());
 		
 		return String.format("home_%s", authenticatedUser.getRole().toLowerCase());
 	}

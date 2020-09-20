@@ -13,19 +13,18 @@
 
     <title>Cadastro</title>
 
-
 <body>
 
-    <form th:method="post" id="form_cadastro" th:action="@{register}" th:object="${docente}">
+    <form th:method="post" id="form_cadastro" th:action="@{cadastro}" th:object="${DTO}">
 
         <h1>CADASTRO</h1>
 
         <div class="choices">
 
-            <input type="radio" name="radiobtn" id="choice">
+            <input type="radio" name="radiobtn" id="choice" th:field = "*{role}" th:value = "docente">
             <label for="choice">Docente</label>
 
-            <input type="radio" name="radiobtn" id="choice2">
+            <input type="radio" name="radiobtn" id="choice2" th:field = "*{role}" th:value = "discente">
             <label for="choice2">Discente</label>
         </div>
 
@@ -36,69 +35,59 @@
 
             <div class="field">
                 <label for="name">Nome</label>
-                <input type="text" name="name" required="required">
+                <input type="text" name="name" required="required" th:field = "*{name}">
                 <span class="error"></span>
             </div>
 
             <div class="field-group">
                 <div class="field">
                     <label for="email">Email</label>
-                    <input type="email" name="email" required="required">
+                    <input type="email" name="email" required="required" th:field = "*{email}">
                     <span class="error" ></span>
                 </div>
 
                 <div class="field">
                     <label for="cpf">CPF</label>
-                    <input type="text" name="cpf" required="required" maxlength="14"
+                    <input type="text" name="cpf" required="required" maxlength="14" th:field = "*{cpf}"
                         onkeydown="javascript: fMasc(this, mCPF);" onkeypress=" return OnlyNumbers(event)">
                     <span class="error"></span>
                 </div>
             </div>
-
-            <div class="field-group">
-                <div class="field">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" id = "password" required="required">
-                    <span class="error"></span>
-                </div>
-
-                <div class="field">
-                    <label for="senha2">Verifique sua senha</label>
-                    <input type="password" name="confirma_senha" id= "confirm_password" required="required">
-                    <span class="error" ></span>
-                </div>
-            </div>
-
+            
             <div class="field-group">
                 <div class="field">
                     <label for="cadeira">Cadeira</label>
-                    <select name="cadeira" required>
+                    <select id = "cadeira" name ="cadeira" th:field = "*{subject}" required>
                         <option value="">Selecione uma cadeira</option>
                     </select>
                     <span class="error"></span>
                 </div>
-
+	
                 <div class="field">
                     <label for="curso">Curso</label>
-                    <select name="curso" required>
+                    <select id = "curso" name = "curso" th:field = "*{course}" required>
                         <option value="">Selecione um curso</option>
                     </select>
-                    <span class="error "></span>
+                    <span class="error"></span>
                 </div>
             </div>
 
             <div class="field" id="element">
                 <label for="cpf">SIAPE</label>
-                <input type="text" id="siape" name="cpf" disabled required="required" maxlength="7"
-                    onkeypress=" return OnlyNumbers(event)">
+                <input type="text" id="siape" name="cpf" required="required" disabled maxlength="7"
+                    th:field = "*{siape}" onkeypress=" return OnlyNumbers(event)">
                 <span class="error"></span>
             </div>
-
             <button type="submit">Cadastrar</button>
-
+            
+            <footer>
+            	<div th:if = "${param.error}" class = "register_error">
+            		<p>Usuário já cadastrado</p>
+            	</div>
+            </footer>
+        	 <input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">
         </fieldset>
     </form>
-    
 </body>
 </head>
 

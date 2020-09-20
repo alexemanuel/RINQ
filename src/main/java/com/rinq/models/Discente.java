@@ -6,14 +6,16 @@ import javax.persistence.Entity;
 public class Discente extends Usuario{
 
 	private String course;
-	private String program;
+	private String subject;
+	private String siape;
 	
 	public Discente() {}
 	
 	public Discente(DataTransferObject OTD) {
 		super(OTD);
-		this.program = OTD.getProgram();
-		this.course = OTD.getCourse();
+		this.setSiape(OTD.getSiape()); 
+		this.subject = OTD.getSubject();
+		this.course  = OTD.getCourse();
 	}
 
 	public String getCourse() {
@@ -24,12 +26,21 @@ public class Discente extends Usuario{
 		this.course = course;
 	}
 
-	public String getProgram() {
-		return program;
+	public String getSubject() {
+		return subject;
+	}
+	
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
-	public void setProgram(String program) {
-		this.program = program;
+	public String getSiape() {
+		return siape;
+	}
+
+	public void setSiape(String siape) {
+		this.siape = siape;
 	}
 
 }

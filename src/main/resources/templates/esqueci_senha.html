@@ -16,7 +16,7 @@
 <form th:method = "post" th:action = "@{esqueci_senha}" th:object = "${DTO}">
     <div id="senha_box">
         <div id="loguin_box_label">
-            Digite seu e-mail:                     
+            Digite seu e-mail                     
             <div class="input-div" id="imput_usuario">
                 <input type="email"  name="nome"  class= "form-control"  required= "required"  placeholder="Informe seu e-mail" th:field = "*{email}"/>
             </div>
@@ -25,8 +25,10 @@
             </div>
         </div>
     </div>
+     <div th:if = "${param.error}" id="erro">
+		Email não cadastrado
+     </div>
     <input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">
-    	
 </form>
  <script>
     $('#imput_cod').css('display','none');

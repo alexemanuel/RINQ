@@ -45,7 +45,7 @@ public class ResetPasswordController {
 				
 		if(user == null) {
 			model.addAttribute("DTO", new DataTransferObject());
-			return "redirect:esqueci_senha?error";
+			return "redirect:/esqueci_senha?error";
 		}
 		
 		PasswordResetToken passwordResetToken = passwordResetTokenService.createToken(user);
@@ -53,19 +53,42 @@ public class ResetPasswordController {
 				
 		mailService.sendMail(user.getName(), email, "Troca de Senha", "reset_password_email.html", passwordResetToken.getToken());
 		
-		return "redirect:login";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/trocar_senha")
-	public String showChangePasswordPage(@RequestParam("token") String tokenValue) {
+	public String showChangePasswordPage(@RequestParam("token") String tokenValue, Model model) {
 
 		boolean tokenValidty = passwordResetTokenService.checkTokenValidity(tokenValue);
-//		passwordResetTokenRepository.deleteByToken(tokenValue);
 		
 		if(tokenValidty) {
+			DataTransferObject DTO = new DataTransferObject();
+			PasswordResetToken passwordResetToken = passwordResetTokenRepository.findByToken(tokenValue);
+			
+			DTO.setToken(passwordResetToken);
+
+			model.addAttribute("DTO", DTO);
 			return "trocar_senha";
 		}
 		
-		return "redirect:login";
+		passwordResetTokenRepository.deleteByToken(tokenValue);		
+		return "redirect:/";
 	}
+	
+	@PostMapping("/trocar_senha")
+	public String updateUserPassword(DataTransferObject DTO) {
+		
+		PasswordResetToken token = DTO.getToken();
+		String tokenValue = token.getToken();
+			
+		Usuario user = token.getUser();
+		user.setPassword(DTO.getPassword());	
+		
+		usuarioRepository.save(user);
+		passwordResetTokenRepository.deleteByToken(tokenValue);		
+		
+		return "redirect:/";
+	}
+	
 }
+
