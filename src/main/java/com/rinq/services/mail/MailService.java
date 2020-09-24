@@ -20,7 +20,7 @@ public class MailService {
     @Autowired
     private JavaMailSender mailSender;
     @Autowired
-    SpringMailConfig springMailConfig;
+    private SpringMailConfig springMailConfig;
     
     private static final String HTML_PATH = "src/main/resources/templates/mail";
     private static final String RESET_PASSWORD_BASE_URL = "/trocar_senha";

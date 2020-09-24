@@ -21,7 +21,7 @@ import com.rinq.repositories.DocenteRepository;
 import com.rinq.repositories.PasswordResetTokenRepository;
 import com.rinq.repositories.UsuarioRepository;
 import com.rinq.services.mail.MailService;
-import com.rinq.services.token.PasswordResetTokenService;
+import com.rinq.services.security.PasswordResetTokenService;
 
 @Controller
 public class RegisterController {

@@ -20,6 +20,6 @@ public class HomeController {
 	public String home(Principal principal){
 		Usuario authenticatedUser = usuarioReposiory.findByCpf(principal.getName());
 		
-		return String.format("home_%s", authenticatedUser.getRole().toLowerCase());
+		return String.format("home_%s", authenticatedUser.getRole());
 	}
 }

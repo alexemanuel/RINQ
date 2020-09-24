@@ -29,7 +29,6 @@ public class Discente extends Usuario{
 	public String getSubject() {
 		return subject;
 	}
-	
 
 	public void setSubject(String subject) {
 		this.subject = subject;
@@ -42,5 +41,4 @@ public class Discente extends Usuario{
 	public void setSiape(String siape) {
 		this.siape = siape;
 	}
-
 }

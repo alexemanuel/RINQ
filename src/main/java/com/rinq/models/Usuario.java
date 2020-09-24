@@ -1,4 +1,4 @@
-package com.rinq.models;
+ package com.rinq.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
