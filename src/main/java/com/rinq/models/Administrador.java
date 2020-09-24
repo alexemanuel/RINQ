@@ -7,8 +7,8 @@ public class Administrador extends Usuario{
 
 	public Administrador() {}
 	
-	public Administrador(DataTransferObject OTD) {
-		super(OTD);
+	public Administrador(DataTransferObject DTO) {
+		super(DTO);
 	}
 
 }

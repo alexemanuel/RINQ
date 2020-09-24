@@ -1,21 +1,21 @@
 package com.rinq.models;
 
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@PrimaryKeyJoinColumn()
 public class Docente extends Usuario{
-	
+
 	private String course;
 	private String subject;
+	private String siape;
 	
 	public Docente() {}
 	
-	public Docente(DataTransferObject ODT) {
-		super(ODT);
-		this.course  = ODT.getCourse();
-		this.subject = ODT.getSubject();
+	public Docente(DataTransferObject DTO) {
+		super(DTO);
+		this.setSiape(DTO.getSiape()); 
+		this.subject = DTO.getSubject();
+		this.course  = DTO.getCourse();
 	}
 
 	public String getCourse() {
@@ -31,6 +31,14 @@ public class Docente extends Usuario{
 	}
 
 	public void setSubject(String subject) {
-		this.course = subject;
+		this.subject = subject;
+	}
+
+	public String getSiape() {
+		return siape;
+	}
+
+	public void setSiape(String siape) {
+		this.siape = siape;
 	}
 }

@@ -17,7 +17,7 @@ import com.rinq.models.Usuario;
 import com.rinq.repositories.PasswordResetTokenRepository;
 import com.rinq.repositories.UsuarioRepository;
 import com.rinq.services.mail.MailService;
-import com.rinq.services.token.PasswordResetTokenService;
+import com.rinq.services.security.PasswordResetTokenService;
 
 @Controller
 public class ResetPasswordController {
@@ -59,7 +59,7 @@ public class ResetPasswordController {
 	@GetMapping("/trocar_senha")
 	public String showChangePasswordPage(@RequestParam("token") String tokenValue, Model model) {
 
-		boolean tokenValidty = passwordResetTokenService.checkTokenValidity(tokenValue);
+		boolean tokenValidty = passwordResetTokenService.isValidToken(tokenValue);
 		
 		if(tokenValidty) {
 			DataTransferObject DTO = new DataTransferObject();

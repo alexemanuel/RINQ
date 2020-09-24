@@ -1,4 +1,4 @@
-package com.rinq.services.token;
+package com.rinq.services.security;
 
 import java.util.Calendar;
 import java.util.UUID;
@@ -23,7 +23,7 @@ public class PasswordResetTokenService {
 		return passwordResetTokenObj;
 	}
 	
-	public boolean checkTokenValidity(String tokenValue) {
+	public boolean isValidToken(String tokenValue) {
 		Calendar calendar = Calendar.getInstance();		
 		PasswordResetToken passwordResetTokenObj = passwordResetTokenRepository.findByToken(tokenValue);
 		

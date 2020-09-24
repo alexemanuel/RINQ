@@ -1,4 +1,4 @@
-package com.rinq.models;
+ package com.rinq.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,11 +23,11 @@ public class Usuario{
 	
 	public Usuario() {}
 	
-	public Usuario(DataTransferObject OTD) {
-		this.cpf   = OTD.getCpf();
-		this.name  = OTD.getName();
-		this.email = OTD.getEmail();
-		this.role  = OTD.getRole();
+	public Usuario(DataTransferObject DTO) {
+		this.cpf   = DTO.getCpf();
+		this.name  = DTO.getName();
+		this.email = DTO.getEmail();
+		this.role  = DTO.getRole();
 	}
 	
 	public String getCpf() {

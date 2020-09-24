@@ -10,9 +10,5 @@ public interface UsuarioRepository extends CrudRepository<Usuario, String>{
 	Usuario findByEmail(String email);
 	
 	boolean existsByCpf(String cpf);
-	
-	void removeByCpf(String cpf);
-	
-	
-	 
+		 
 }

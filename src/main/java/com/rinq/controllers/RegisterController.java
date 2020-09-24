@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.rinq.models.DataTransferObject;
-import com.rinq.models.Discente;
 import com.rinq.models.Docente;
+import com.rinq.models.Discente;
 import com.rinq.models.PasswordResetToken;
 import com.rinq.models.Usuario;
 import com.rinq.repositories.DiscenteRepository;
@@ -21,7 +21,7 @@ import com.rinq.repositories.DocenteRepository;
 import com.rinq.repositories.PasswordResetTokenRepository;
 import com.rinq.repositories.UsuarioRepository;
 import com.rinq.services.mail.MailService;
-import com.rinq.services.token.PasswordResetTokenService;
+import com.rinq.services.security.PasswordResetTokenService;
 
 @Controller
 public class RegisterController {
@@ -58,11 +58,11 @@ public class RegisterController {
 		}else {
 			
 			if(newUserRole.equals("docente")) {
-				Docente newUser = new Docente(DTO);
+				Discente newUser = new Discente(DTO);
 				docenteRepository.save(newUser);
 			
 			}else {
-				Discente newUser = new Discente(DTO);
+				Docente newUser = new Docente(DTO);
 				discenteRepository.save(newUser);
 			}
 			
