@@ -1,21 +1,18 @@
 package com.rinq.models;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Curso implements Serializable {
+public class Curso {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCurso;
     private String nameCurso;
     private String turno;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id_Curso")
-    private List<Disciplina> disciplinas = new ArrayList<>();
+    @OneToMany(mappedBy = "curso", targetEntity = Disciplina.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Disciplina> disciplinas;
 
     public Curso() {}
 
@@ -46,5 +43,13 @@ public class Curso implements Serializable {
 
     public void setTurno(String turno) {
         this.turno = turno;
+    }
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 }
