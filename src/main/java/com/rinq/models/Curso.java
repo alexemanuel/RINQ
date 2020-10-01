@@ -33,7 +33,7 @@ public class Curso {
         return nameCurso;
     }
 
-    public void setName(String nameCurso) {
+    public void setNameCurso(String nameCurso) {
         this.nameCurso = nameCurso;
     }
 
