@@ -1,6 +1,10 @@
 package com.rinq.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Docente extends Usuario{
@@ -8,6 +12,9 @@ public class Docente extends Usuario{
 	private String course;
 	private String subject;
 	private String siape;
+
+	@OneToMany(mappedBy = "siape", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Aula> aulas;
 	
 	public Docente() {}
 	

@@ -1,6 +1,7 @@
 package com.rinq.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Disciplina {
@@ -14,6 +15,9 @@ public class Disciplina {
     @ManyToOne
     @JoinColumn(name = "curso_id")
     private Curso curso;
+
+    @OneToMany(mappedBy = "disciplina", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Aula> aulas;
 
     public Disciplina() {}
 
@@ -52,5 +56,13 @@ public class Disciplina {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public List<Aula> getAulas() {
+        return aulas;
+    }
+
+    public void setAulas(List<Aula> aulas) {
+        this.aulas = aulas;
     }
 }
