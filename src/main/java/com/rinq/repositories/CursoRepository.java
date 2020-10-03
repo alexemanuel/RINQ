@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.rinq.models.Curso;
 
-public interface CursoRepository extends CrudRepository<Curso, String> {
+public interface CursoRepository extends CrudRepository<Curso, Long> {
 
     Curso findByIdCurso(Long idCurso);
 
