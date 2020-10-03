@@ -11,6 +11,10 @@ public class DataTransferObject {
 	private String role;
 	private String siape;
 	private PasswordResetToken token;
+	private String nameCurso;
+	private String turno;
+	private String nameDisciplina;
+	private int cargaHoraria;
 
 	public String getEmail() {
 		return email;
@@ -82,5 +86,37 @@ public class DataTransferObject {
 
 	public void setToken(PasswordResetToken passwordResetToken) {
 		this.token = passwordResetToken;
-	}	
+	}
+
+	public String getNameCurso() {
+		return nameCurso;
+	}
+
+	public void setNameCurso(String nameCurso) {
+		this.nameCurso = nameCurso;
+	}
+
+	public String getTurno() {
+		return turno;
+	}
+
+	public void setTurno(String turno) {
+		this.turno = turno;
+	}
+
+	public String getNameDisciplina() {
+		return nameDisciplina;
+	}
+
+	public void setNameDisciplina(String nameDisciplina) {
+		this.nameDisciplina = nameDisciplina;
+	}
+
+	public int getCargaHoraria() {
+		return cargaHoraria;
+	}
+
+	public void setCargaHoraria(int cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
 }
