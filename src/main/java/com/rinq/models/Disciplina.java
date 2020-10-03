@@ -1,24 +1,19 @@
 package com.rinq.models;
 
-import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Data
-@Table(name = "Curso_Disciplina")
-@IdClass(DisciplinaCursoId.class)
 public class Disciplina {
 
     @Id
-    private Long idCurso;
-    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDisciplina;
     private String nameDisciplina;
     private int cargaHoraria;
+
+    @ManyToOne
+    @JoinColumn(name = "curso_id")
+    private Curso curso;
 
     public Disciplina() {}
 
@@ -27,4 +22,35 @@ public class Disciplina {
         this.nameDisciplina = DTO.getNameDisciplina();
     }
 
+    public Long getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(Long idDisciplina) {
+        this.idDisciplina = idDisciplina;
+    }
+
+    public String getNameDisciplina() {
+        return nameDisciplina;
+    }
+
+    public void setNameDisciplina(String nameDisciplina) {
+        this.nameDisciplina = nameDisciplina;
+    }
+
+    public int getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public void setCargaHoraria(int cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
 }

@@ -1,10 +1,10 @@
 package com.rinq.repositories;
 
 import com.rinq.models.Disciplina;
-import com.rinq.models.DisciplinaCursoId;
+
 import org.springframework.data.repository.CrudRepository;
 
-public interface DisciplinaRepository extends CrudRepository<Disciplina, DisciplinaCursoId> {
+public interface DisciplinaRepository extends CrudRepository<Disciplina, String> {
 
     Disciplina findByIdDisciplina(Long idDisciplina);
 

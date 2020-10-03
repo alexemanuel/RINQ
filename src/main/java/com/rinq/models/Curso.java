@@ -1,20 +1,18 @@
 package com.rinq.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Curso {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCurso;
     private String nameCurso;
     private String turno;
+    @OneToMany(mappedBy = "curso", targetEntity = Disciplina.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Disciplina> disciplinas;
 
     public Curso() {}
 
@@ -35,7 +33,7 @@ public class Curso {
         return nameCurso;
     }
 
-    public void setNameCurso(String name) {
+    public void setNameCurso(String nameCurso) {
         this.nameCurso = nameCurso;
     }
 
@@ -45,5 +43,13 @@ public class Curso {
 
     public void setTurno(String turno) {
         this.turno = turno;
+    }
+
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
     }
 }
