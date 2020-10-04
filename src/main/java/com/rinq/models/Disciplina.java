@@ -1,19 +1,30 @@
 package com.rinq.models;
 
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Disciplina {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDisciplina;
-    private String nameDisciplina;
+    private Long id;
+    
+    private String name;
     private int cargaHoraria;
 
     @ManyToOne
-    @JoinColumn(name = "curso_id")
     private Curso curso;
 
     @OneToMany(mappedBy = "disciplina", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -21,25 +32,20 @@ public class Disciplina {
 
     public Disciplina() {}
 
-    public Disciplina(DataTransferObject DTO){
-        this.cargaHoraria = DTO.getCargaHoraria();
-        this.nameDisciplina = DTO.getNameDisciplina();
+    public Long getId() {
+        return id;
     }
 
-    public Long getIdDisciplina() {
-        return idDisciplina;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setIdDisciplina(Long idDisciplina) {
-        this.idDisciplina = idDisciplina;
+    public String getName() {
+        return name;
     }
 
-    public String getNameDisciplina() {
-        return nameDisciplina;
-    }
-
-    public void setNameDisciplina(String nameDisciplina) {
-        this.nameDisciplina = nameDisciplina;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getCargaHoraria() {

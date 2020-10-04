@@ -1,17 +1,20 @@
 package com.rinq.models;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.List;
+
 
 @Entity
 public class Docente extends Usuario{
-
-	private String course;
-	private String subject;
+	
 	private String siape;
+	private String curso;
+	private String disciplina;
 
 	@OneToMany(mappedBy = "siape", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aula> aulas;
@@ -20,25 +23,25 @@ public class Docente extends Usuario{
 	
 	public Docente(DataTransferObject DTO) {
 		super(DTO);
-		this.setSiape(DTO.getSiape()); 
-		this.subject = DTO.getSubject();
-		this.course  = DTO.getCourse();
+		this.siape = DTO.getSiape(); 
+		this.disciplina = DTO.getSubject();
+		this.curso  = DTO.getCourse();
 	}
 
-	public String getCourse() {
-		return course;
+	public String getCurso() {
+		return curso;
 	}
 
-	public void setCourse(String course) {
-		this.course = course;
+	public void setCurso(String curso) {
+		this.curso = curso;
 	}
 
-	public String getSubject() {
-		return subject;
+	public String getDisciplina() {
+		return disciplina;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setDisciplina(String disciplina) {
+		this.disciplina = disciplina;
 	}
 
 	public String getSiape() {

@@ -16,18 +16,18 @@ public class Usuario{
 	
 	@Id
 	private String cpf;
-	private String password;
-	private String name;
+	private String senha;
+	private String nome;
 	private String email;
-	private String role;
+	private String funcao;
 	
 	public Usuario() {}
 	
-	public Usuario(DataTransferObject DTO) {
+	public Usuario(DataTransferObject DTO) {	
 		this.cpf   = DTO.getCpf();
-		this.name  = DTO.getName();
+		this.nome  = DTO.getName();
 		this.email = DTO.getEmail();
-		this.role  = DTO.getRole();
+		this.funcao  = DTO.getRole();
 	}
 	
 	public String getCpf() {
@@ -38,20 +38,20 @@ public class Usuario{
 		this.cpf = cpf;
 	}
 	
-	public String getPassword() {
-		return password;
+	public String getSenha() {
+		return senha;
 	}
 	
-	public void setPassword(String password) {		
-		this.password = passwordEncoder.encode(password);
+	public void setSenha(String senha) {		
+		this.senha = passwordEncoder.encode(senha);
 	}
 	
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	public String getEmail() {
@@ -62,11 +62,11 @@ public class Usuario{
 		this.email = email;
 	}
 
-	public String getRole() {
-		return role;
+	public String getFuncao() {
+		return funcao;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setFuncao(String funcao) {
+		this.funcao = funcao;
 	}
 }

@@ -1,36 +1,30 @@
 package com.rinq.models;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+	
 @Entity
-@PrimaryKeyJoinColumn()
 public class Discente extends Usuario{
 	
-	private String course;
-	private String subject;
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_curso")
+	private Curso curso;
 	
 	public Discente() {}
 	
-	public Discente(DataTransferObject DTO) {
+	public Discente(DataTransferObject DTO, Curso curso) {
 		super(DTO);
-		this.course  = DTO.getCourse();
-		this.subject = DTO.getSubject();
+		this.curso  = curso;
 	}
 
-	public String getCourse() {
-		return course;
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setCourse(String course) {
-		this.course = course;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.course = subject;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 }

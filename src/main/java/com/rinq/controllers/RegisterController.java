@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.rinq.models.Curso;
 import com.rinq.models.DataTransferObject;
-import com.rinq.models.Docente;
 import com.rinq.models.Discente;
+import com.rinq.models.Docente;
 import com.rinq.models.PasswordResetToken;
 import com.rinq.models.Usuario;
+import com.rinq.repositories.CursoRepository;
 import com.rinq.repositories.DiscenteRepository;
 import com.rinq.repositories.DocenteRepository;
 import com.rinq.repositories.PasswordResetTokenRepository;
@@ -36,11 +38,13 @@ public class RegisterController {
 	@Autowired
 	DiscenteRepository discenteRepository;
 	@Autowired
+	CursoRepository cursoRepository;
+
+	@Autowired
 	PasswordResetTokenRepository passwordResetTokenRepository;
 	@Autowired
 	PasswordResetTokenService passwordResetTokenService;
-	
-	
+		
 	@GetMapping("/cadastro")
 	public String registerForm(Model model){
 		
@@ -56,14 +60,16 @@ public class RegisterController {
 			return "redirect:/cadastro?error";
 		
 		}else {
-			
-			if(newUserRole.equals("docente")) {
-				Discente newUser = new Discente(DTO);
-				docenteRepository.save(newUser);
+
+			if(newUserRole.equals("discente")) {
+				Curso curso = cursoRepository.findByNome(DTO.getCourse());
+				Discente discente = new Discente(DTO, curso);
+				
+				docenteRepository.save(discente);
 			
 			}else {
-				Docente newUser = new Docente(DTO);
-				discenteRepository.save(newUser);
+				Docente docente = new Docente(DTO);
+				discenteRepository.save(docente);
 			}
 			
 			PasswordResetToken passwordResetToken = passwordResetTokenService.createToken(new Usuario(DTO));

@@ -20,6 +20,6 @@ public class HomeController {
 	public String home(Principal principal){
 		Usuario authenticatedUser = usuarioReposiory.findByCpf(principal.getName());	
 		// Directs the user to the proper home page
-		return String.format("home_%s", authenticatedUser.getRole());
+		return String.format("home_%s", authenticatedUser.getFuncao());
 	}
 }

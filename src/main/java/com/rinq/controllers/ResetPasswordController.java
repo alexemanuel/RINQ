@@ -51,7 +51,7 @@ public class ResetPasswordController {
 		PasswordResetToken passwordResetToken = passwordResetTokenService.createToken(user);
 		passwordResetTokenRepository.save(passwordResetToken);
 				
-		mailService.sendMail(user.getName(), email, "Troca de Senha", "reset_password_email.html", passwordResetToken.getToken());
+		mailService.sendMail(user.getNome(), email, "Troca de Senha", "reset_password_email.html", passwordResetToken.getToken());
 		
 		return "redirect:/";
 	}
@@ -82,7 +82,7 @@ public class ResetPasswordController {
 		String tokenValue = token.getToken();
 			
 		Usuario user = token.getUser();
-		user.setPassword(DTO.getPassword());	
+		user.setSenha(DTO.getPassword());	
 		
 		usuarioRepository.save(user);
 		passwordResetTokenRepository.deleteByToken(tokenValue);		

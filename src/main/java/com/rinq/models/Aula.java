@@ -8,38 +8,40 @@ public class Aula {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAula;
+    private Long id;
+    
     @Temporal(TemporalType.DATE)
-    private Calendar dataAula;
+    private Calendar data;
+    
     private String assunto;
     private Integer quantidade;
 
     @ManyToOne
     @JoinColumn(name = "siape")
     private Docente siape;
-
+    
     @ManyToOne
-    @JoinColumn(name = "disciplina_id")
+    @JoinColumn(name = "id_disciplina")
     private Disciplina disciplina;
 
     public Aula() {}
 
     public Aula(DataTransferObject DTO) {}
 
-    public Long getIdAula() {
-        return idAula;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdAula(Long idAula) {
-        this.idAula = idAula;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Calendar getDataAula() {
-        return dataAula;
+    public Calendar getData() {
+        return data;
     }
 
-    public void setDataAula(Calendar dataAula) {
-        this.dataAula = dataAula;
+    public void setData(Calendar data) {
+        this.data = data;
     }
 
     public String getAssunto() {
@@ -57,16 +59,16 @@ public class Aula {
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
+    
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
 
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
-
-    public void setSiape(Docente siape) {
-        this.siape = siape;
-    }
-
-    public Disciplina getDisciplina() {
-        return disciplina;
-    }
+//
+//    public void setSiape(Docente siape) {
+//        this.siape = siape;
+//    }
 }

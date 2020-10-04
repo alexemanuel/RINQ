@@ -21,6 +21,7 @@ public class PasswordResetToken {
 	private long id;
 	
 	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "cpf_usario")
 	private Usuario user;
 	
 	private String token;
