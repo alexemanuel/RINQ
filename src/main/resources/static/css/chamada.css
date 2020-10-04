@@ -1,0 +1,154 @@
+body{
+        background-color:#3cb371
+        }
+     #login_box{
+        background: #F0F8FF;
+        width:800px;
+        height:900px;
+        margin:50px auto 0px;
+        border-radius:5px;
+        box-shadow: 0px 0px 30px;
+        overflow:hidden;
+     }
+    #login_box_label{
+        background:#DCDCDC;
+        width:800px;
+        height:50px;
+        font: bold 15px/45px sans-serif ;
+        border-bottom: 1px solid #C0C0C0;
+        box-shadow: 1px 0px 3px #A9A9A9;
+        color:#555555;
+
+     }
+    .input-div{
+
+         margin: 10px;
+         padding:5px;
+         background-color:#f2f5f7;
+         border-radius:3px;
+    }
+    .input-div input{
+
+        width:125px;
+        height:20px;
+        padding-left:5px;
+        color:black;
+        border-radius:3px;
+        outline:none;
+    }
+    .input-div:hover input{
+        border-color:#7dc6dd;
+}
+
+    #botoes{
+    	margin-top:30px;
+	    position: absolute;
+        top:860px;
+        margin-left:600px;
+        font: bold 17px/45px sans-serif ;
+
+
+    }
+    #imput_data{
+        position: absolute;
+
+         top:750px;
+         margin-left:135px;
+         font: bold 17px/45px sans-serif ;
+    }
+    #date{
+    font: bold 13px/45px sans-serif ;
+    }
+     #imput_descrição{
+           position: absolute;
+           top:820px;
+           margin-left:140px;
+           font: bold 17px/45px sans-serif ;
+          Word-wrap:break-Word
+      }
+      .input-div-obs input{
+               padding-left:5px;
+              color:black;
+              border-radius:3px;
+              outline:none;
+         }
+
+      #turma{
+            position: absolute;
+            margin-left:620px;
+            top:150px;
+
+       }
+       #nome_turma{
+            position: absolute;
+            margin-left:550px;
+            font: bold 17px/45px sans-serif ;
+            top:135px;
+       }
+       #home{
+           position: absolute;
+           top:55px;
+           margin-left:20px;
+
+
+       }
+       #prof{
+       position: absolute;
+       top:55px;
+       margin-left:550px;
+       font: bold 17px/45px sans-serif ;
+       color:black;
+
+       }
+      a:link, a:visited {
+      	text-decoration: none;
+      	color:#3cb371;
+
+      	}
+      a:hover {
+      	text-decoration: underline;
+      	color: #f00;
+      	}
+
+       #chamada{
+           position: absolute;
+           margin-left:50px;
+           top:130px;
+       }
+
+       #tabela_box{
+               background:white;
+               width:600px;
+               height:500px;
+               font: bold 15px/45px sans-serif ;
+               border-bottom: 1px solid #C0C0C0;
+               box-shadow: 1px 0px 3px #A9A9A9;
+               color:black;
+               margin-left:100px;
+               margin:130px auto 0px;
+
+         }
+        #tabela{
+
+            font: bold 15px/25px sans-serif ;
+            font: 100% sans-serif;
+            background-color:white;
+            border-collapse: collapse;
+            empty-cells: show;
+            border: 1px solid #7a7;
+            margin:5px auto 0px;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+	
+
