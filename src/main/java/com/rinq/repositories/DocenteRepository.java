@@ -1,10 +1,14 @@
 package com.rinq.repositories;
 
+
 import org.springframework.data.repository.CrudRepository;
 
-import com.rinq.models.Discente;
+import com.rinq.models.Docente;
 
-public interface DocenteRepository extends CrudRepository<Discente, String>{
+public interface DocenteRepository extends CrudRepository<Docente, String>{
 	
-	Discente findByCpf(String Cpf);
+	Docente findByCpf(String cpf);
+	
+	boolean existsByCpf(String cpf);
+	
 }

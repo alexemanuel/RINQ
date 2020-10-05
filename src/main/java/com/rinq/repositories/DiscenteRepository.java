@@ -1,10 +1,15 @@
 package com.rinq.repositories;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
-import com.rinq.models.Docente;
+import com.rinq.models.Curso;
+import com.rinq.models.Discente;
 
-public interface DiscenteRepository extends CrudRepository<Docente, String>{
+public interface DiscenteRepository extends CrudRepository<Discente, String>{
 	
-	Docente findByCpf(String cpf);
+	Discente findByCpf(String cpf);
+	
+	List<Discente> findAllByCurso(Curso curso);	
 }

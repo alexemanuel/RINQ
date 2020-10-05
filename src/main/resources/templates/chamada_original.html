@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-br" xmlns:th = "https://www.thymeleaf.org">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8">
         <title>chamada</title>
@@ -16,12 +16,12 @@
     </head>
     <body>
 
-    <form method="post" action="home.html">
+    <form method="post" action="home_admin.html">
         <div id="login_box">
 
             <div id="login_box_label">
                 <div id="home">
-                    <a href="home">
+                    <a href="home_docente.html">
                         <img src="images/seta.png" style="width:30px;height:30px;"/>
                     </a>
                 </div>
@@ -64,13 +64,13 @@
                         <th>Matrícula</th>
                         <th>Nome </th>
                         <th>Presença </th>
-					</tr>
-					
-                    <tr th:each = "estudante : ${students}">
-                    	<td th:text = "${estudante.nome}"></td>
-                    	<td th:text = "${estudante.cpf}"></td>
-                    	<td th:text = "${estudante.email}"></td>
-						<td>
+
+                    </tr>
+                    <tr>
+                        <td>01</td>
+                        <td>20192adspl0409</td>
+                        <td>keiza analizi da silva</td>
+                        <td>
                             <select  name="presença">
                                 <option value="presente">Presente</option>
                                 <option value="1f">1 Falta</option>
@@ -78,9 +78,48 @@
                             </select>
                         </td>
                     </tr>
-            </table>
+                                       <tr>
+                        <td>02</td>
+                        <td>20192adspl0409</td>
+                        <td>kassia anelize da silva antonio ferraz vieira</td>
+                        <td>
+                            <select  name="presença">
+                                <option value="presente">Presente</option>
+                                <option value="1f">1 Falta</option>
+                                <option value="2f">2 Falta</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>20192adspl0409</td>
+                        <td>kassia anelize da silva antonio ferraz vieira</td>
+                        <td>
+                            <select  name="presença">
+                                <option value="presente">Presente</option>
+                                <option value="1f">1 Falta</option>
+                                <option value="2f">2 Falta</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>20192adspl0409</td>
+                        <td>kassia anelize da silva antonio ferraz vieira</td>
+                        <td>
+                            <select  name="presença">
+                                <option value="presente">Presente</option>
+                                <option value="1f">1 Falta</option>
+                                <option value="2f">2 Falta</option>
+                            </select>
+                        </td>
+                    </tr>
+                   
+
             </div>
-            </div>
+
+
+
     </form>
     <script>
                     var today = new Date();
@@ -96,5 +135,9 @@
 
                     document.getElementById('date').value= yr+"-"+mt+"-"+dy;
                 </script>
+
+
+
     </body>
+
 </html>
