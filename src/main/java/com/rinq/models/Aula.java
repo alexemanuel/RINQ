@@ -17,7 +17,7 @@ public class Aula {
     private Integer quantidade;
 
     @ManyToOne
-    @JoinColumn(name = "siape")
+    @JoinColumn(name = "siape", referencedColumnName = "siape")
     private Docente siape;
     
     @ManyToOne
