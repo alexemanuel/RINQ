@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap");
+:root{
+    --title-color:#466175;
+    --primary-color: #1CDF74;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+ html,
+ body {
+     height: 100vh;
+     font-family: Roboto;
+     text-rendering: optimizeLegibility;
+     -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    color: var(--title-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    font-weight: 700;
+}
+
+header .container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   width: 90%;
+   height: 62px;
+   max-width: 1170px;
+   margin: 0 auto;
+}
+
+header .rinq-name {
+   
+   font-size: 30px;
+   /* margin-left: 20px; */
+   
+   text-decoration: none;
+   color: white;
+}
+
+header nav ul {
+   display: flex;
+}
+
+header nav ul li {
+   list-style: none;
+}
+
+header nav ul li a {
+   color: white;
+   text-transform: uppercase;
+   padding: 24px;
+   display: flex;
+   align-items: center;
+}
+
+
+header .menu-section span {
+   margin-right: 16px;
+   background-image: url(../images/arrow-left.svg);
+   
+   width: 20px;
+   height: 24px;
+
+   display: flex;
+}
+
+main .main-container {
+
+   display: flex;
+   flex-direction: column;
+   
+
+   background-color: #f5f5f5;
+   width: 90%;
+   max-width: 970px;
+   height: 100vh;
+   
+   margin: 40px auto;
+   border-radius: 28px;
+   
+   
+}
+
+main .main-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   font-weight: 700;
+
+   height: 250px;
+   padding-right: 27px;
+   
+}
+
+main .main-header .img {
+   display: flex;
+   align-items: center;
+}
+
+main .overals {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr ;
+   grid-gap: 30px;
+
+   max-width: 900px;
+   margin: 25px auto;    
+}
+
+
+
+main .overals h4{
+   background-color: white;
+   border-radius: 10px;
+   padding: 5px;
+  
+}
+
+
+.grades {
+   width: 90%;
+   margin: 24px auto;
+}
+
+
+.grades th,td {
+   
+   border: 1px solid var(--title-color) ;
+   border-collapse: collapse;
+   text-align: center;
+   padding: 8px;
+}    
+.grades th{
+   background-color: #e5e5e5;
+   color: var(--title-color) ;
+}
+tr:nth-child(even) {
+   background-color: #1cdf74bd;
+}
