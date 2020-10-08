@@ -2,6 +2,7 @@ package com.rinq.models;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.Set;
 
 @Entity
 public class Aula {
@@ -23,6 +24,9 @@ public class Aula {
     @ManyToOne
     @JoinColumn(name = "id_disciplina")
     private Disciplina disciplina;
+
+    @OneToMany(mappedBy = "aula", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Falta> faltas;
 
     public Aula() {}
 
@@ -67,8 +71,12 @@ public class Aula {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
-//
-//    public void setSiape(Docente siape) {
-//        this.siape = siape;
-//    }
+
+    public Set<Falta> getFaltas() {
+        return faltas;
+    }
+
+    public void setFaltas(Set<Falta> faltas) {
+        this.faltas = faltas;
+    }
 }
