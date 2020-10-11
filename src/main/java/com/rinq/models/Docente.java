@@ -6,32 +6,35 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 
 @Entity
 public class Docente extends Usuario{
 	
-	private String siape;
-	private String curso;
+	@OneToOne
+	private Curso curso;
+	
 	private String disciplina;
+	private String siape;
 
 	@OneToMany(mappedBy = "siape", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aula> aulas;
 	
 	public Docente() {}
 	
-	public Docente(DataTransferObject DTO) {
+	public Docente(DataTransferObject DTO, Curso curso) {
 		super(DTO);
 		this.siape = DTO.getSiape(); 
 		this.disciplina = DTO.getSubject();
-		this.curso  = DTO.getCourse();
+		this.curso = curso;
 	}
 
-	public String getCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
 
-	public void setCurso(String curso) {
+	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 

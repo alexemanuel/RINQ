@@ -11,5 +11,7 @@ public interface DiscenteRepository extends CrudRepository<Discente, String>{
 	
 	Discente findByCpf(String cpf);
 	
-	List<Discente> findAllByCurso(Curso curso);	
+	List<Discente> findByCursoOrderByNome(Curso curso);
+	
+	int countByCurso(Curso curso);
 }

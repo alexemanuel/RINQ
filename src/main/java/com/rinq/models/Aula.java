@@ -67,8 +67,12 @@ public class Aula {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
-//
-//    public void setSiape(Docente siape) {
-//        this.siape = siape;
-//    }
+    
+    public void getSiape(Docente siape) {
+        this.siape = siape;
+    }
+
+    public void setSiape(Docente siape) {
+        this.siape = siape;
+    }
 }

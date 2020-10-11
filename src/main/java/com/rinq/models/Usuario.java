@@ -24,10 +24,10 @@ public class Usuario{
 	public Usuario() {}
 	
 	public Usuario(DataTransferObject DTO) {	
-		this.cpf   = DTO.getCpf();
-		this.nome  = DTO.getName();
-		this.email = DTO.getEmail();
-		this.funcao  = DTO.getRole();
+		this.cpf    = DTO.getCpf();
+		this.nome   = DTO.getName();
+		this.email  = DTO.getEmail();
+		this.funcao = DTO.getRole();
 	}
 	
 	public String getCpf() {
