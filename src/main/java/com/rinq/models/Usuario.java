@@ -1,14 +1,13 @@
  package com.rinq.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.Set;
 
-@Entity
+
+ @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario{	
 
@@ -20,6 +19,12 @@ public class Usuario{
 	private String nome;
 	private String email;
 	private String funcao;
+
+	@OneToMany(mappedBy = "discente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Falta> faltas;
+
+	@OneToMany(mappedBy = "discente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Prova> provas;
 	
 	public Usuario() {}
 	
@@ -69,4 +74,20 @@ public class Usuario{
 	public void setFuncao(String funcao) {
 		this.funcao = funcao;
 	}
-}
+
+	 public Set<Falta> getFaltas() {
+		 return faltas;
+	 }
+
+	 public void setFaltas(Set<Falta> faltas) {
+		 this.faltas = faltas;
+	 }
+
+	 public Set<Prova> getProvas() {
+		 return provas;
+	 }
+
+	 public void setProvas(Set<Prova> provas) {
+		 this.provas = provas;
+	 }
+ }

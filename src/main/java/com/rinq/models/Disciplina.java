@@ -1,6 +1,7 @@
 package com.rinq.models;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,6 +28,9 @@ public class Disciplina {
 
     @OneToMany(mappedBy = "disciplina", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Aula> aulas;
+
+    @OneToMany(mappedBy = "disciplina", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Prova> provas;
 
     public Disciplina() {}
 
@@ -68,6 +72,14 @@ public class Disciplina {
 
     public void setAulas(List<Aula> aulas) {
         this.aulas = aulas;
+    }
+
+    public Set<Prova> getProvas() {
+        return provas;
+    }
+
+    public void setProvas(Set<Prova> provas) {
+        this.provas = provas;
     }
 
     public void addAula(Aula aula){

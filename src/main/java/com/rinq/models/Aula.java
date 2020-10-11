@@ -1,7 +1,19 @@
 package com.rinq.models;
 
-import javax.persistence.*;
 import java.util.Calendar;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Aula {
@@ -23,6 +35,9 @@ public class Aula {
     @ManyToOne
     @JoinColumn(name = "id_disciplina")
     private Disciplina disciplina;
+
+    @OneToMany(mappedBy = "aula", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Falta> faltas;
 
     public Aula() {}
 
@@ -74,5 +89,13 @@ public class Aula {
 
     public void setSiape(Docente siape) {
         this.siape = siape;
+    }
+
+    public List<Falta> getFaltas() {
+        return faltas;
+    }
+
+    public void setFaltas(List<Falta> faltas) {
+        this.faltas = faltas;
     }
 }
