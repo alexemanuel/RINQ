@@ -22,6 +22,7 @@ import com.rinq.repositories.DiscenteRepository;
 import com.rinq.repositories.DocenteRepository;
 import com.rinq.repositories.PasswordResetTokenRepository;
 import com.rinq.repositories.UsuarioRepository;
+import com.rinq.service.matricula.MatriculaGenerator;
 import com.rinq.services.mail.MailService;
 import com.rinq.services.security.PasswordResetTokenService;
 
@@ -46,30 +47,32 @@ public class RegisterController {
 	PasswordResetTokenService passwordResetTokenService;
 		
 	@GetMapping("/cadastro")
-	public String registerForm(Model model){
+	public String showRegisterForm(Model model){
 		
 		model.addAttribute("DTO", new DataTransferObject());
 		return "cadastro";
 	}
 	
 	@PostMapping("/cadastro")
-	public String registerSubmit(@ModelAttribute DataTransferObject DTO, Model model) throws MessagingException, IOException {
+	public String registeUser(@ModelAttribute DataTransferObject DTO, Model model) throws MessagingException, IOException {
 		String newUserRole = DTO.getRole();
 		
 		if(usuarioRepository.existsByCpf(DTO.getCpf())) {
 			return "redirect:/cadastro?error";
 		
 		}else {
+			Curso curso = cursoRepository.findByNome(DTO.getCourse());
 
 			if(newUserRole.equals("discente")) {
-				Curso curso = cursoRepository.findByNome(DTO.getCourse());
-				Discente discente = new Discente(DTO, curso);
+				int code = discenteRepository.countByCurso(curso);
+				String matricula = MatriculaGenerator.generateMatricula(curso.getNome(), 1, code);
 				
-				docenteRepository.save(discente);
+				Discente discente = new Discente(DTO, curso, matricula);	
+				discenteRepository.save(discente);
 			
-			}else {
-				Docente docente = new Docente(DTO);
-				discenteRepository.save(docente);
+			}else {				
+				Docente docente = new Docente(DTO, curso);
+				docenteRepository.save(docente);
 			}
 			
 			PasswordResetToken passwordResetToken = passwordResetTokenService.createToken(new Usuario(DTO));

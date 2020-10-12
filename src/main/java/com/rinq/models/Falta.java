@@ -10,8 +10,8 @@ public class Falta {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "discente", referencedColumnName = "cpf")
-    private Usuario discente;
+    @JoinColumn(name = "discente", referencedColumnName = "matricula")
+    private Discente discente;
 
     @ManyToOne
     @JoinColumn(name = "id_aula")
@@ -31,11 +31,11 @@ public class Falta {
         this.id = id;
     }
 
-    public Usuario getDiscente() {
+    public Discente getDiscente() {
         return discente;
     }
 
-    public void setDiscente(Usuario discente) {
+    public void setDiscente(Discente discente) {
         this.discente = discente;
     }
 
