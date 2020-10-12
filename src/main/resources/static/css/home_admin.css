@@ -22,7 +22,6 @@ body{
         box-shadow: 1px 0px 3px #A9A9A9;
         color:#555555;
 
-
      }
      #logo{
      margin-left:350px;
@@ -32,8 +31,8 @@ body{
      }
       #sair{
       position: absolute;
-       top:25px;
-     margin-left:750px;
+      top:25px;
+      margin-left:750px;
      }
 
        #cadastro{
@@ -41,7 +40,6 @@ body{
      margin-left:10px;
       top:150px;
      }
-
 
      .texto-cadastro{
      position: absolute;

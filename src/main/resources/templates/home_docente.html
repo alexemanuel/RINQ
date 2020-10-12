@@ -15,9 +15,9 @@
 	<body>
 
 	    <div id= "login_box">
-			<img id="chamada1" src="/images/chamada.png"  style="width:50px;height:60px;"/> <a class="texto-chamada" href = "chamada.html" >Chamada</a>
+			<img id="chamada1" src="/images/chamada_icon.png"  style="width:50px;height:60px;"/> <a class="texto-chamada" href = "chamada" >Chamada</a>
 			<div id="messagem-boletim">Insira notas</div>
-			<img id="boletim1" src="/images/boletim.png"  style="width:50px;height:60px;"/> <a class="texto-boletim" href = "boletim.html">Boletim</a>
+			<img id="boletim1" src="/images/boletim_icon.png"  style="width:50px;height:60px;"/> <a class="texto-boletim" href = "boletim">Boletim</a>
 			<div id="messagem-chamada">Insira frequências</div>
 
 			<div id="login_box_label">
@@ -26,7 +26,7 @@
 				</div>
 				<div id="sair">
 				<form action = "/logout" method = "post">
-						<input type = "image" src = "/images/sair.png" alt = "Submit" style="width:40px;height:40px;">
+						<input type = "image" src = "/images/sair_button_icon.png" alt = "Submit" style="width:40px;height:40px;">
 						<input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">			
 					</form>
 				</div>

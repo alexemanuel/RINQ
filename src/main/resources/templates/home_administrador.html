@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+f<!DOCTYPE html>
 <html xmlns:th = "https://www.thymeleaf.org" lang = "pt-br">
 
 <head>
@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id= "login_box">
-	<img id="cadastro" src="/images/cadastro.png"  style="width:50px;height:60px;"/> <a class="texto-cadastro" href = "cadastro" >Cadastro</a>
+	<img id="cadastro" src="/images/cadastro_icon.png"  style="width:50px;height:60px;"/> <a class="texto-cadastro" href = "cadastro" >Cadastro</a>
 	<div id="messagem-cadastro"> Cadastro de discentes e docentes</div>
 
 	<div id="login_box_label">
@@ -24,7 +24,7 @@
 		</div>
 		<div id="sair">
 			<form action = "/logout" method = "post">
-				<input type = "image" src = "/images/sair.png" alt = "Submit" style="width:40px;height:40px;">
+				<input type = "image" src = "/images/sair_button_icon.png" alt = "Submit" style="width:40px;height:40px;">
 				<input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">			
 			</form>
 		</div>
