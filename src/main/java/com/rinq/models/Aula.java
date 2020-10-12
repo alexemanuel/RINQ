@@ -25,12 +25,12 @@ public class Aula {
     @Temporal(TemporalType.DATE)
     private Calendar data;
     
-    private String assunto;
+    private String observacao;
     private Integer quantidade;
 
     @ManyToOne
     @JoinColumn(name = "siape", referencedColumnName = "siape")
-    private Docente siape;
+    private Docente docente;
     
     @ManyToOne
     @JoinColumn(name = "id_disciplina")
@@ -40,8 +40,6 @@ public class Aula {
     private List<Falta> faltas;
 
     public Aula() {}
-
-    public Aula(DataTransferObject DTO) {}
 
     public Long getId() {
         return id;
@@ -59,12 +57,12 @@ public class Aula {
         this.data = data;
     }
 
-    public String getAssunto() {
-        return assunto;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
     public Integer getQuantidade() {
@@ -83,12 +81,12 @@ public class Aula {
         this.disciplina = disciplina;
     }
     
-    public void getSiape(Docente siape) {
-        this.siape = siape;
+    public void getDocente(Docente docente) {
+        this.docente = docente;
     }
 
-    public void setSiape(Docente siape) {
-        this.siape = siape;
+    public void setDocente(Docente docente) {
+        this.docente = docente;
     }
 
     public List<Falta> getFaltas() {

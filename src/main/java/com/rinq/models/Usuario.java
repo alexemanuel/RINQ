@@ -1,16 +1,17 @@
  package com.rinq.models;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.util.Set;
 
-
- @Entity
+@Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario{	
-
+public class Usuario implements Serializable{	
+	
+	private static final long serialVersionUID = 1L;
 	private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@Id
@@ -20,12 +21,6 @@ public class Usuario{
 	private String email;
 	private String funcao;
 
-	@OneToMany(mappedBy = "discente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Falta> faltas;
-
-	@OneToMany(mappedBy = "discente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Prova> provas;
-	
 	public Usuario() {}
 	
 	public Usuario(DataTransferObject DTO) {	
@@ -73,21 +68,5 @@ public class Usuario{
 
 	public void setFuncao(String funcao) {
 		this.funcao = funcao;
-	}
-
-	 public Set<Falta> getFaltas() {
-		 return faltas;
-	 }
-
-	 public void setFaltas(Set<Falta> faltas) {
-		 this.faltas = faltas;
-	 }
-
-	 public Set<Prova> getProvas() {
-		 return provas;
-	 }
-
-	 public void setProvas(Set<Prova> provas) {
-		 this.provas = provas;
-	 }
+	}	
  }

@@ -12,13 +12,15 @@ import javax.persistence.OneToOne;
 @Entity
 public class Docente extends Usuario{
 	
+	private static final long serialVersionUID = 1L;
+	
 	@OneToOne
 	private Curso curso;
 	
 	private String disciplina;
 	private String siape;
 
-	@OneToMany(mappedBy = "siape", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "docente", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aula> aulas;
 	
 	public Docente() {}

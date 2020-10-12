@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class Discente extends Usuario{
 	
+	private static final long serialVersionUID = 1L;
+
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_curso")
 	private Curso curso;
