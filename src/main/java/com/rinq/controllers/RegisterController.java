@@ -65,7 +65,7 @@ public class RegisterController {
 
 			if(newUserRole.equals("discente")) {
 				int code = discenteRepository.countByCurso(curso);
-				String matricula = MatriculaGenerator.generateMatricula(curso.getNome(), 1, code);
+				String matricula = MatriculaGenerator.generateMatricula(curso.getNome(), code);
 				
 				Discente discente = new Discente(DTO, curso, matricula);	
 				discenteRepository.save(discente);
