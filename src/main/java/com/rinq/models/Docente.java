@@ -2,11 +2,7 @@ package com.rinq.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 
 @Entity
@@ -16,9 +12,11 @@ public class Docente extends Usuario{
 	
 	@OneToOne
 	private Curso curso;
-	
-	private String disciplina;
+
 	private String siape;
+
+	@ManyToOne
+	private Disciplina disciplina;
 
 	@OneToMany(mappedBy = "docente", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aula> aulas;
@@ -28,7 +26,7 @@ public class Docente extends Usuario{
 	public Docente(DataTransferObject DTO, Curso curso) {
 		super(DTO);
 		this.siape = DTO.getSiape(); 
-		this.disciplina = DTO.getSubject();
+		//this.disciplina = DTO.getSubject();
 		this.curso = curso;
 	}
 
@@ -40,11 +38,11 @@ public class Docente extends Usuario{
 		this.curso = curso;
 	}
 
-	public String getDisciplina() {
+	public Disciplina getDisciplina() {
 		return disciplina;
 	}
 
-	public void setDisciplina(String disciplina) {
+	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
 	}
 
