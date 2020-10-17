@@ -15,7 +15,8 @@ public class Docente extends Usuario{
 
 	private String siape;
 
-	@ManyToOne
+	@OneToOne
+	@JoinColumn(name = "id_disciplina")
 	private Disciplina disciplina;
 
 	@OneToMany(mappedBy = "docente", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -2,14 +2,7 @@ package com.rinq.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 
 @Entity
@@ -25,8 +18,8 @@ public class Disciplina {
     @ManyToOne
     private Curso curso;
 
-    @OneToMany(mappedBy = "disciplina", targetEntity = Docente.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Docente> docentes;
+    @OneToOne(mappedBy = "disciplina", targetEntity = Docente.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Docente docente;
 
     @OneToMany(mappedBy = "disciplina", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Aula> aulas;
@@ -84,12 +77,12 @@ public class Disciplina {
         this.provas = provas;
     }
 
-    public List<Docente> getDocentes() {
-        return docentes;
+    public Docente getDocente() {
+        return docente;
     }
 
-    public void setDocentes(List<Docente> docentes) {
-        this.docentes = docentes;
+    public void setDocente(Docente docente) {
+        this.docente = docente;
     }
 
     public void addAula(Aula aula){
@@ -100,15 +93,5 @@ public class Disciplina {
     public void removeAula(Aula aula){
         this.aulas.remove(aula);
         aula.setDisciplina(null);
-    }
-
-    public void addDocente(Docente docente){
-        this.docentes.add(docente);
-        docente.setDisciplina(this);
-    }
-
-    public void removeAula(Docente docente){
-        this.docentes.remove(docente);
-        docente.setDisciplina(null);
     }
 }
