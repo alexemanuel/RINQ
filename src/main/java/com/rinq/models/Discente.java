@@ -2,14 +2,8 @@ package com.rinq.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-	
+import javax.persistence.*;
+
 @Entity
 public class Discente extends Usuario{
 	
@@ -21,6 +15,9 @@ public class Discente extends Usuario{
 	
 	@Column(nullable = false, length = 11)
 	private String matricula;
+
+	@ManyToMany(mappedBy = "discentes")
+	private List<Disciplina> disciplinas;
 	
 	@OneToMany(mappedBy = "discente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Falta> faltas;
@@ -67,4 +64,12 @@ public class Discente extends Usuario{
 	public void setProvas(List<Prova> provas) {
 		this.provas = provas;
 	}	
+
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
 }

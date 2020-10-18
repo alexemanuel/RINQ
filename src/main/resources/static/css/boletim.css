@@ -24,59 +24,11 @@ a{
 }
 
 h1, h2, h3, h4 {
-    color: var(--title-color);
+   color: #555555;
 }
 
-header {
-    background-color: var(--primary-color);
-    font-weight: 700;
-}
-
-header .container {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-
-   width: 90%;
-   height: 62px;
-   max-width: 1170px;
-   margin: 0 auto;
-}
-
-header .rinq-name {
-   
-   font-size: 30px;
-   /* margin-left: 20px; */
-   
-   text-decoration: none;
-   color: white;
-}
-
-header nav ul {
-   display: flex;
-}
-
-header nav ul li {
-   list-style: none;
-}
-
-header nav ul li a {
-   color: white;
-   text-transform: uppercase;
-   padding: 24px;
-   display: flex;
-   align-items: center;
-}
-
-
-header .menu-section span {
-   margin-right: 16px;
-   background-image: url(../images/arrow-left.svg);
-   
-   width: 20px;
-   height: 24px;
-
-   display: flex;
+body{
+   background-color:#3cb371;
 }
 
 main .main-container {
@@ -85,13 +37,13 @@ main .main-container {
    flex-direction: column;
    
 
-   background-color: #f5f5f5;
+   background-color: #F0F8FF;
    width: 90%;
    max-width: 970px;
    height: 100vh;
    
    margin: 40px auto;
-   border-radius: 28px;
+   border-radius: 5px;
    
    
 }

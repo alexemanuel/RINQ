@@ -2,14 +2,7 @@ package com.rinq.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class Disciplina {
@@ -23,6 +16,15 @@ public class Disciplina {
 
     @ManyToOne
     private Curso curso;
+
+    @OneToOne(mappedBy = "disciplina", targetEntity = Docente.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Docente docente;
+
+    @ManyToMany
+    @JoinTable(name = "Discente_Disciplina", joinColumns =
+            {@JoinColumn(name = "id_disciplina")}, inverseJoinColumns =
+            {@JoinColumn(name = "discente", referencedColumnName = "matricula")})
+    private List<Discente> discentes;
 
     @OneToMany(mappedBy = "disciplina", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Aula> aulas;
@@ -78,6 +80,22 @@ public class Disciplina {
 
     public void setProvas(List<Prova> provas) {
         this.provas = provas;
+    }
+
+    public Docente getDocente() {
+        return docente;
+    }
+
+    public void setDocente(Docente docente) {
+        this.docente = docente;
+    }
+
+    public List<Discente> getDiscentes() {
+        return discentes;
+    }
+
+    public void setDiscentes(List<Discente> discentes) {
+        this.discentes = discentes;
     }
 
     public void addAula(Aula aula){
