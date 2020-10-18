@@ -1,7 +1,6 @@
 package com.rinq.models;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Disciplina {
 
@@ -20,7 +18,7 @@ public class Disciplina {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String name;
+    private String nome;
     private int cargaHoraria;
 
     @ManyToOne
@@ -30,7 +28,7 @@ public class Disciplina {
     private List<Aula> aulas;
 
     @OneToMany(mappedBy = "disciplina", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Prova> provas;
+    private List<Prova> provas;
 
     public Disciplina() {}
 
@@ -42,12 +40,12 @@ public class Disciplina {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getCargaHoraria() {
@@ -74,11 +72,11 @@ public class Disciplina {
         this.aulas = aulas;
     }
 
-    public Set<Prova> getProvas() {
+    public List<Prova> getProvas() {
         return provas;
     }
 
-    public void setProvas(Set<Prova> provas) {
+    public void setProvas(List<Prova> provas) {
         this.provas = provas;
     }
 

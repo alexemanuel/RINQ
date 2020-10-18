@@ -10,7 +10,7 @@ public class Falta {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "discente", referencedColumnName = "matricula")
+    @JoinColumn(name = "matricula_discente", referencedColumnName = "matricula")
     private Discente discente;
 
     @ManyToOne
@@ -18,11 +18,10 @@ public class Falta {
     private Aula aula;
 
     @Column(nullable = true)
-    private Integer quantidadeFalta;
+    private Integer quantidadeFaltas;
 
-    public Falta() {
-    }
-
+    public Falta() {}
+    
     public Long getId() {
         return id;
     }
@@ -47,11 +46,11 @@ public class Falta {
         this.aula = aula;
     }
 
-    public Integer getQuantidadeFalta() {
-        return quantidadeFalta;
+    public Integer getQuantidadeFaltas() {
+        return quantidadeFaltas;
     }
 
-    public void setQuantidadeFalta(Integer quantidadeFalta) {
-        this.quantidadeFalta = quantidadeFalta;
+    public void setQuantidadeFaltas(Integer quantidadeFaltas) {
+        this.quantidadeFaltas = quantidadeFaltas;
     }
 }

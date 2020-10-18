@@ -1,6 +1,6 @@
 package com.rinq.models;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,13 +23,13 @@ public class Aula {
     private Long id;
     
     @Temporal(TemporalType.DATE)
-    private Calendar data;
+    private Date data;
     
     private String observacao;
     private Integer quantidade;
 
     @ManyToOne
-    @JoinColumn(name = "siape", referencedColumnName = "siape")
+    @JoinColumn(name = "siape_docente", referencedColumnName = "siape")
     private Docente docente;
     
     @ManyToOne
@@ -49,11 +49,11 @@ public class Aula {
         this.id = id;
     }
 
-    public Calendar getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(Calendar data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
@@ -81,8 +81,8 @@ public class Aula {
         this.disciplina = disciplina;
     }
     
-    public void getDocente(Docente docente) {
-        this.docente = docente;
+    public Docente getDocente() {
+        return docente;
     }
 
     public void setDocente(Docente docente) {

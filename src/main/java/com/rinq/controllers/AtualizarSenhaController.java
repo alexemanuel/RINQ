@@ -20,7 +20,7 @@ import com.rinq.services.mail.MailService;
 import com.rinq.services.security.PasswordResetTokenService;
 
 @Controller
-public class ResetPasswordController {
+public class AtualizarSenhaController {
 	
 	@Autowired
 	MailService mailService;

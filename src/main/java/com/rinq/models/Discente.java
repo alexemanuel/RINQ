@@ -52,19 +52,19 @@ public class Discente extends Usuario{
 		this.matricula = matricula;
 	}
 	
-//	public List<Falta> getFaltas() {
-//		return faltas;
-//	}
-//
-//	public void setFaltas(List<Falta> faltas) {
-//		this.faltas = faltas;
-//	}	
-//	
-//	public List<Prova> getProvas() {
-//		return provas;
-//	}
-//
-//	public void setProvas(List<Prova> provas) {
-//		this.provas = provas;
-//	}	
+	public List<Falta> getFaltas() {
+		return faltas;
+	}
+
+	public void setFaltas(List<Falta> faltas) {
+		this.faltas = faltas;
+	}	
+	
+	public List<Prova> getProvas() {
+		return provas;
+	}
+
+	public void setProvas(List<Prova> provas) {
+		this.provas = provas;
+	}	
 }

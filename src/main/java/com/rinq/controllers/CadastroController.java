@@ -27,7 +27,7 @@ import com.rinq.services.mail.MailService;
 import com.rinq.services.security.PasswordResetTokenService;
 
 @Controller
-public class RegisterController {
+public class CadastroController {
 	
 	@Autowired
 	MailService mailService;
