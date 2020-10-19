@@ -2,6 +2,7 @@ package com.rinq.models;
 
 
 public class DataTransferObject {
+	
 	private String name;
 	private String email;
 	private String cpf;

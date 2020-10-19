@@ -2,9 +2,14 @@
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.rinq.service.DTO.CadastroDTO;
 
 
 @Entity
@@ -23,11 +28,11 @@ public class Usuario implements Serializable{
 
 	public Usuario() {}
 	
-	public Usuario(DataTransferObject DTO) {	
+	public Usuario(CadastroDTO DTO) {	
 		this.cpf    = DTO.getCpf();
-		this.nome   = DTO.getName();
+		this.nome   = DTO.getNome();
 		this.email  = DTO.getEmail();
-		this.funcao = DTO.getRole();
+		this.funcao = DTO.getFuncao();
 	}
 	
 	public String getCpf() {

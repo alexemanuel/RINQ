@@ -27,6 +27,6 @@ public class PasswordResetTokenService {
 		Calendar calendar = Calendar.getInstance();		
 		PasswordResetToken passwordResetTokenObj = passwordResetTokenRepository.findByToken(tokenValue);
 		
-		return passwordResetTokenObj != null && calendar.before(passwordResetTokenObj.getExperyDate());
+		return passwordResetTokenObj != null && calendar.before(passwordResetTokenObj.getDataExperiracao());
 	}
 }

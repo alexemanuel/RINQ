@@ -33,15 +33,26 @@ document.getElementById('subject').style.display = 'none';
 
 document.getElementById('choice2').addEventListener('change', () => {
     if (document.getElementById('choice2').checked) {
+    	
         document.getElementById('element').style.display = 'none';
         document.getElementById('subject').style.display = 'none';
+        
+        document.getElementById('siape').required = false;
+        document.getElementById('subject').required = false;
+        
+        
     }
 })
 
 document.getElementById('choice').addEventListener('change', () => {
     if (document.getElementById('choice').checked){
-        document.getElementById('element').style.display = 'flex';
+        
+    	document.getElementById('element').style.display = 'flex';
         document.getElementById('subject').style.display = 'flex';
+        
+        document.getElementById('siape').required = true;
+        document.getElementById('subject').required = true;
+        
         
     
     }

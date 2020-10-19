@@ -16,8 +16,11 @@ public class Falta {
     @ManyToOne
     @JoinColumn(name = "id_aula")
     private Aula aula;
+    
+    @OneToOne
+    @JoinColumn(name = "id_disciplina")
+    private Disciplina disciplina;
 
-    @Column(nullable = true)
     private Integer quantidadeFaltas;
 
     public Falta() {}
@@ -52,5 +55,13 @@ public class Falta {
 
     public void setQuantidadeFaltas(Integer quantidadeFaltas) {
         this.quantidadeFaltas = quantidadeFaltas;
+    }
+    
+    public Disciplina getDisciplina() {
+    	return disciplina;
+    }
+    
+    public void setDisciplina(Disciplina disciplina) {
+    	this.disciplina = disciplina;
     }
 }

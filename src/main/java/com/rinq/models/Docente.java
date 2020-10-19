@@ -2,7 +2,14 @@ package com.rinq.models;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.rinq.service.DTO.CadastroDTO;
 
 
 @Entity
@@ -11,6 +18,7 @@ public class Docente extends Usuario{
 	private static final long serialVersionUID = 1L;
 	
 	@OneToOne
+	@JoinColumn(name = "id_curso")
 	private Curso curso;
 
 	private String siape;
@@ -24,11 +32,11 @@ public class Docente extends Usuario{
 	
 	public Docente() {}
 	
-	public Docente(DataTransferObject DTO, Curso curso) {
+	public Docente(CadastroDTO DTO) {
 		super(DTO);
 		this.siape = DTO.getSiape(); 
-		//this.disciplina = DTO.getSubject();
-		this.curso = curso;
+		this.disciplina = DTO.getDisciplina();
+		this.curso = DTO.getCurso();
 	}
 
 	public Curso getCurso() {

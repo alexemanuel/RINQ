@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     
-    <link rel="stylesheet" type="text/css" href="src/main/resources/static/css/cadastro.css">
+    <link rel="stylesheet" type="text/css" href="css/cadastro.css">
 
-    <script src="src/main/resources/static/javascript/validation.js" defer></script>
-    <script src="src/main/resources/static/javascript/options.js" defer></script>
-    <script src="src/main/resources/static/javascript/numbersAndMask.js" defer></script>
-    <script src="src/main/resources/static/javascript/toggleDisplay.js" defer></script>
+    <script src="javascript/validation.js" defer></script>
+    <script src="javascript/options.js" defer></script>
+    <script src="javascript/numbersAndMask.js" defer></script>
+    <script src="javascript/toggleDisplay.js" defer></script>
 
     <title>Cadastro</title>
 
@@ -21,10 +21,10 @@
 
         <div class="choices">
 
-            <input type="radio" name="radiobtn" id="choice" th:field = "*{role}" th:value = "docente" required>
+            <input type="radio" name="radiobtn" id="choice" th:field = "*{funcao}" th:value = "docente" required>
             <label for="choice">Docente</label>
 
-            <input type="radio" name="radiobtn" id="choice2" th:field = "*{role}" th:value = "discente" required>
+            <input type="radio" name="radiobtn" id="choice2" th:field = "*{funcao}" th:value = "discente" required>
             <label for="choice2">Discente</label>
         </div>
 
@@ -35,7 +35,7 @@
 
             <div class="field">
                 <label for="name">Nome</label>
-                <input type="text" name="name" required="required" th:field = "*{name}">
+                <input type="text" name="name" required="required" th:field = "*{nome}">
                 <span class="error"></span>
             </div>
 
@@ -57,17 +57,13 @@
             <div class="field-group">
                 <div class="field">
                     <label for="curso">Curso</label>
-                    <select id = "curso" name = "curso" th:field = "*{course}" required>
-                        <option value="">Selecione um curso</option>
-                    </select>
+                    <select id = "curso" name = "curso" th:field = "*{nomeCurso}" required></select>
                     <span class="error"></span>
                 </div>
 
                 <div class="field" id="subject">
                     <label for="cadeira">Cadeira</label>
-                    <select id = "cadeira" name ="cadeira" th:field = "*{subject}" required>
-                        <option value="">Selecione uma cadeira</option>
-                    </select>
+                    <select id = "cadeira" name ="cadeira" th:field = "*{nomeDisciplina}"></select>
                     <span class="error"></span>
                 </div>
 	
@@ -75,7 +71,7 @@
 
             <div class="field" id="element">
                 <label for="cpf">SIAPE</label>
-                <input type="text" id="siape" name="cpf" required="required" maxlength="7"
+                <input type="text" id="siape" name="cpf" maxlength="7"
                     th:field = "*{siape}" onkeypress=" return OnlyNumbers(event)">
                 <span class="error"></span>
             </div>

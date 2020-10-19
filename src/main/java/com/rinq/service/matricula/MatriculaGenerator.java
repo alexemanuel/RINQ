@@ -2,6 +2,9 @@ package com.rinq.service.matricula;
 
 import java.util.Calendar;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class MatriculaGenerator {
 	
 	private static final String templateMatricula = "%d%sPL%04d";

@@ -2,10 +2,19 @@ package com.rinq.models;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.rinq.service.DTO.CadastroDTO;
 
 @Entity
-public class Discente extends Usuario{
+public class Discente extends Usuario implements Comparable<Discente>{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -13,7 +22,7 @@ public class Discente extends Usuario{
 	@JoinColumn(name = "id_curso")
 	private Curso curso;
 	
-	@Column(nullable = false, length = 11)
+	@Column(unique = true, nullable = false, length = 11)
 	private String matricula;
 
 	@ManyToMany(mappedBy = "discentes")
@@ -27,9 +36,9 @@ public class Discente extends Usuario{
 	
 	public Discente() {}
 	
-	public Discente(DataTransferObject DTO, Curso curso, String matricula) {
+	public Discente(CadastroDTO DTO, String matricula) {
 		super(DTO);
-		this.curso  = curso;
+		this.curso  = DTO.getCurso();
 		this.matricula = matricula;
 	}
 
@@ -71,5 +80,10 @@ public class Discente extends Usuario{
 
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
+	}
+		
+	@Override
+	public int compareTo(Discente discente) {
+		return getNome().compareToIgnoreCase(discente.getNome());
 	}
 }
