@@ -7,7 +7,7 @@ import com.rinq.models.Disciplina;
 import com.rinq.repositories.CursoRepository;
 import com.rinq.repositories.DisciplinaRepository;
 
-public class CadastroDTO {
+public class UsuarioDTO {
 
 	@Autowired
 	CursoRepository cursoRepository;
@@ -27,7 +27,7 @@ public class CadastroDTO {
 	private Disciplina disciplina;
 	private String siape;
 	
-	public CadastroDTO(){}	
+	public UsuarioDTO(){}	
 	
 	public String getNome() {
 		return nome;
