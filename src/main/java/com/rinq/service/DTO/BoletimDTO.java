@@ -1,4 +1,4 @@
-package com.rinq.models.DTO;
+package com.rinq.service.DTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +56,7 @@ public class BoletimDTO {
 				nota2 = (notas.getProva2() != null) ? Float.toString(notas.getProva2()) : "";
 				mediaFinal = (notas.getMediaFinal() != null) ? Float.toString(notas.getMediaFinal()) : "";
 			}		
-			
+						
 			int totalFaltas = faltaRepository.countByDiscenteAndDisciplina(discente, disciplina);
 						
 			EntradaBoletimDTO entradaBoletimDTO = new EntradaBoletimDTO(disciplina, nota1, nota2, mediaFinal, totalFaltas);			

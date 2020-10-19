@@ -1,24 +1,20 @@
-package com.rinq.models.DTO;
+package com.rinq.service.DTO;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.stereotype.Service;
+
 import com.rinq.models.Aula;
 
-
+@Service
 public class AulaDTO{
 	
 	private static final SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");	 
 	private Aula aula;
 	private String stringData;
-		
-	public AulaDTO() {}
-
-	public AulaDTO(Aula aula){	
-		this.aula = aula;
-	}
-	
+			
 	public void setAula(Aula aula) {
 		this.aula = aula;
 	}
@@ -30,7 +26,8 @@ public class AulaDTO{
 	public void setStringData(String stringData) throws ParseException {
 		this.stringData = stringData;
 		
-		Date data = dateFormater.parse(stringData); // Convert String Date to Date Object
+		// Convert String Date to Date Object
+		Date data = dateFormater.parse(stringData); 
 		aula.setData(data);
 	}
 	
