@@ -13,7 +13,11 @@ public interface DiscenteRepository extends CrudRepository<Discente, String>{
 	
 	Discente findByCpf(String cpf);
 	
+	Discente findByLogin(String login);
+	
 	boolean existsByCpf(String cpf);
+	
+	boolean existsByLogin(String login);
 	
 	List<Discente> findByCursoOrderByNome(Curso curso);
 		

@@ -65,6 +65,7 @@ public class CadastroController {
 	public String registeUser(@ModelAttribute CadastroDTO cadastroDTO, Model model) throws MessagingException, IOException {
 		String userFuncao = cadastroDTO.getFuncao(); // User's Role (Docente, Discente, Administrador)
 		
+				
 		if(usuarioRepository.existsByCpf(cadastroDTO.getCpf())) {
 			return "redirect:/cadastro?error";
 		
@@ -76,9 +77,11 @@ public class CadastroController {
 			
 			if(userFuncao.equals("discente")) {
 				int discenteNumber = discenteRepository.countByCurso(curso);
-				String matricula = MatriculaGenerator.generateMatricula(curso.getNome(), discenteNumber);
 				
-				Discente discente = new Discente(cadastroDTO, matricula);			
+				String matricula = MatriculaGenerator.generateMatricula(curso.getNome(), discenteNumber);
+				cadastroDTO.setMatricula(matricula);
+				
+				Discente discente = new Discente(cadastroDTO);			
 				
 				List<Disciplina> disciplinas = disciplinaRepository.findByCurso(curso);
 				

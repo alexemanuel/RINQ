@@ -25,10 +25,10 @@ public class NotasController {
 	
 	@GetMapping("/boletim")
 	public String showBoletim(Model model, Principal principal) {
-		String cpf = principal.getName();
+		String login = principal.getName();
 		
-		if(discenteRepository.existsByCpf(cpf)) {
-			Discente discente = discenteRepository.findByCpf(cpf);
+		if(discenteRepository.existsByLogin(login)) {
+			Discente discente = discenteRepository.findByLogin(login);
 			
 			boletimDTO.initializeEntradasBoletim(discente);
 			boletimDTO.setNomeDiscente(discente.getNome());

@@ -1,12 +1,9 @@
 package com.rinq.service.DTO;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rinq.models.Curso;
 import com.rinq.models.Disciplina;
-import com.rinq.repositories.CursoRepository;
-import com.rinq.repositories.DisciplinaRepository;
 
 @Service
 public class CadastroDTO {
@@ -25,6 +22,9 @@ public class CadastroDTO {
 	private String nomeDisciplina;
 	private Disciplina disciplina;
 	private String siape;
+	
+	// Only Discente Attributes
+	private String matricula;
 	
 	public String getNome() {
 		return nome;
@@ -96,5 +96,13 @@ public class CadastroDTO {
 
 	public void setNomeDisciplina(String nomeDisciplina) {
 		this.nomeDisciplina = nomeDisciplina;	
+	}
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 }

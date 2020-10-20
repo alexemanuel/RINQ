@@ -10,6 +10,8 @@ public interface UsuarioRepository extends CrudRepository<Usuario, String>{
 	
 	Usuario findByCpf(String cpf);
 	
+	Usuario findByLogin(String login);
+	
 	Usuario findByEmail(String email);
 	
 	boolean existsByCpf(String cpf);

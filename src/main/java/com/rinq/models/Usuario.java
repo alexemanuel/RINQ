@@ -20,6 +20,7 @@ public class Usuario implements Serializable{
 	private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@Id
+	private String login;
 	private String cpf;
 	private String senha;
 	private String nome;
@@ -29,10 +30,19 @@ public class Usuario implements Serializable{
 	public Usuario() {}
 	
 	public Usuario(CadastroDTO DTO) {	
-		this.cpf    = DTO.getCpf();
-		this.nome   = DTO.getNome();
-		this.email  = DTO.getEmail();
-		this.funcao = DTO.getFuncao();
+		cpf    = DTO.getCpf();
+		nome   = DTO.getNome();
+		email  = DTO.getEmail();
+		funcao = DTO.getFuncao();
+		login  = (funcao.equals("discente")) ? DTO.getMatricula() : DTO.getSiape();		
+	}
+	
+	public String getLogin() {
+		return login;
+	}
+	
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
 	public String getCpf() {

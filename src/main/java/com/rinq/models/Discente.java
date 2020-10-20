@@ -36,10 +36,10 @@ public class Discente extends Usuario implements Comparable<Discente>{
 	
 	public Discente() {}
 	
-	public Discente(CadastroDTO DTO, String matricula) {
+	public Discente(CadastroDTO DTO) {
 		super(DTO);
 		this.curso  = DTO.getCurso();
-		this.matricula = matricula;
+		this.matricula = DTO.getMatricula();
 	}
 
 	public Curso getCurso() {
