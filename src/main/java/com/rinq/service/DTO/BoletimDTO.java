@@ -22,7 +22,10 @@ public class BoletimDTO {
 
 	private List<EntradaBoletimDTO> entradasBoletim;
 	private String nomeDiscente;
-
+	private float mediaDisciplinas;
+	private float rendimentoGlobal;
+	private float coeficienteRendimento;
+	
 	public List<EntradaBoletimDTO> getEntradasBoletim() {
 		return entradasBoletim;
 	}
@@ -39,11 +42,37 @@ public class BoletimDTO {
 		this.nomeDiscente = nomeDiscente;
 	}
 
+	public float getMediaDisciplinas() {
+		return mediaDisciplinas;
+	}
+
+	public void setMediaDisciplinas(float mediaDisciplinas) {
+		this.mediaDisciplinas = mediaDisciplinas;
+	}
+
+	public float getCoeficienteRendimento() {
+		return coeficienteRendimento;
+	}
+
+	public void setCoeficienteRendimento(float coeficienteRendimento) {
+		this.coeficienteRendimento = coeficienteRendimento;
+	}
+
+	public float getRendimentoGlobal() {
+		return rendimentoGlobal;
+	}
+
+	public void setRendimentoGlobal(float rendimentoGlobal) {
+		this.rendimentoGlobal = rendimentoGlobal;
+	}
+	
 	public void initializeEntradasBoletim(Discente discente) {
 		entradasBoletim = new ArrayList<EntradaBoletimDTO>();
 		List<Disciplina> disciplinas = discente.getDisciplinas();
 				
 		for(Disciplina disciplina: disciplinas) {
+			String nomeDisciplina = disciplina.getNome();
+			int cargaHorariaDisciplina = disciplina.getCargaHoraria();
 			
 			String nota1 = "";
 			String nota2 = "";
@@ -55,24 +84,69 @@ public class BoletimDTO {
 				nota1 = (notas.getProva1() != null) ? Float.toString(notas.getProva1()) : "";
 				nota2 = (notas.getProva2() != null) ? Float.toString(notas.getProva2()) : "";
 				mediaFinal = (notas.getMediaFinal() != null) ? Float.toString(notas.getMediaFinal()) : "";
-			}		
+			}
 						
 			int totalFaltas = faltaRepository.countByDiscenteAndDisciplina(discente, disciplina);
 						
-			EntradaBoletimDTO entradaBoletimDTO = new EntradaBoletimDTO(disciplina, nota1, nota2, mediaFinal, totalFaltas);			
-			entradasBoletim.add(entradaBoletimDTO);				
+			EntradaBoletimDTO entradaBoletim = new EntradaBoletimDTO(nomeDisciplina, cargaHorariaDisciplina, nota1, nota2, mediaFinal, totalFaltas);			
+			entradasBoletim.add(entradaBoletim);				
 		}
+	}
+	
+	public void calculateMediaDisciplinas() {
+		
+		float mediaDisciplinas = 0;
+		float numMediasAvaliable = 0;
+		int sumMedias = 0;
+		
+		for(EntradaBoletimDTO entradaBoletim : entradasBoletim) {	
+			String mediaFinal = entradaBoletim.getMediaFinal();
+			
+			if(mediaFinal != "") {
+				sumMedias += Float.parseFloat(mediaFinal);
+				numMediasAvaliable ++;
+			}
+		}	
+		if(numMediasAvaliable > 0) {
+			mediaDisciplinas = sumMedias / numMediasAvaliable;
+		}
+		
+		setMediaDisciplinas(mediaDisciplinas);
+	}
+	
+	public void calculateCoeficienteRendimento() {
+		
+		float coeficienteRendimento = 0;
+		float sumProdMediaCargaHoraria = 0;
+		int sumCargaHorarias = 0;
+		
+		for(EntradaBoletimDTO entradaBoletim: entradasBoletim) {
+			String mediaFinal = entradaBoletim.getMediaFinal();
+			
+			if(mediaFinal != "") {
+				sumProdMediaCargaHoraria += Float.parseFloat(mediaFinal) * entradaBoletim.getCargaHorariaDisciplina();
+				sumCargaHorarias += entradaBoletim.getCargaHorariaDisciplina();
+			}
+		}	
+		if(sumProdMediaCargaHoraria > 0) {
+			coeficienteRendimento = sumProdMediaCargaHoraria / sumCargaHorarias;
+		}
+		
+		setCoeficienteRendimento(coeficienteRendimento);
 	}
 }
 
+
 class EntradaBoletimDTO {
 
-	private Disciplina disciplina;
+	private String nomeDisciplina;
+	private int cargaHorariaDisciplina;
 	private String nota1, nota2, mediaFinal;
 	private int totalFaltas;
 
-	public EntradaBoletimDTO(Disciplina disciplina, String nota1, String nota2, String mediaFinal, int totalFaltas) {
-		this.disciplina = disciplina;
+	public EntradaBoletimDTO(String nomeDisciplina, int cargaHorariaDisciplina, String nota1, String nota2, String mediaFinal, int totalFaltas) {
+		this.nomeDisciplina = nomeDisciplina;
+		this.cargaHorariaDisciplina = cargaHorariaDisciplina;
 		this.nota1 = nota1;
 		this.nota2 = nota2;
 		this.mediaFinal = mediaFinal;
@@ -85,14 +159,6 @@ class EntradaBoletimDTO {
 
 	public void setTotalFaltas(int totalFaltas) {
 		this.totalFaltas = totalFaltas;
-	}
-
-	public Disciplina getDisciplina() {
-		return disciplina;
-	}
-
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
 	}
 
 	public String getNota1() {
@@ -117,5 +183,21 @@ class EntradaBoletimDTO {
 
 	public void setMediaFinal(String mediaFinal) {
 		this.mediaFinal = mediaFinal;
+	}
+
+	public String getNomeDisciplina() {
+		return nomeDisciplina;
+	}
+
+	public void setNomeDisciplina(String nomeDisciplina) {
+		this.nomeDisciplina = nomeDisciplina;
+	}
+
+	public int getCargaHorariaDisciplina() {
+		return cargaHorariaDisciplina;
+	}
+
+	public void setCargaHorariaDisciplina(int cargaHorariaDisciplina) {
+		this.cargaHorariaDisciplina = cargaHorariaDisciplina;
 	}
 }

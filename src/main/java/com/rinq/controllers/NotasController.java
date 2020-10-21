@@ -32,8 +32,10 @@ public class NotasController {
 			
 			boletimDTO.initializeEntradasBoletim(discente);
 			boletimDTO.setNomeDiscente(discente.getNome());
+			boletimDTO.calculateCoeficienteRendimento();
+			boletimDTO.calculateMediaDisciplinas();
 			
-			model.addAttribute("boletimDTO", boletimDTO);
+			model.addAttribute("DTO", boletimDTO);
 		}
 		return "/boletim";
 	}
