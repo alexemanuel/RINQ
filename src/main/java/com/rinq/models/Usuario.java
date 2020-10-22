@@ -2,10 +2,7 @@
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -21,10 +18,15 @@ public class Usuario implements Serializable{
 	
 	@Id
 	private String login;
+	@Column(nullable = false, length = 14)
 	private String cpf;
+	@Column(nullable = false, length = 60)
 	private String senha;
+	@Column(nullable = false, length = 100)
 	private String nome;
+	@Column(nullable = false, length = 100)
 	private String email;
+	@Column(nullable = false, length = 14)
 	private String funcao;
 
 	public Usuario() {}
