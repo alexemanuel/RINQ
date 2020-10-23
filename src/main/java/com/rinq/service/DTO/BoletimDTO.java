@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.rinq.models.Discente;
 import com.rinq.models.Disciplina;
-import com.rinq.models.Prova;
+import com.rinq.models.Notas;
 import com.rinq.repositories.FaltaRepository;
 import com.rinq.repositories.ProvaRepository;
 
@@ -78,7 +78,7 @@ public class BoletimDTO {
 			String nota2 = "";
 			String mediaFinal = "";
 					
-			Prova notas = provaRepository.findByDiscenteAndDisciplina(discente, disciplina);
+			Notas notas = provaRepository.findByDiscenteAndDisciplina(discente, disciplina);
 			
 			if(notas != null) {
 				nota1 = (notas.getProva1() != null) ? Float.toString(notas.getProva1()) : "";

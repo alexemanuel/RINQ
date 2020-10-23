@@ -15,7 +15,7 @@ public class Administrador extends Usuario{
 	
 	public Administrador(CadastroDTO DTO) {
 		super(DTO);
-		this.setSiape(DTO.getSiape());
+		this.siape = DTO.getSiape();
 	}
 
 	public String getSiape() {

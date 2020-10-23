@@ -5,10 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import com.rinq.models.Discente;
 import com.rinq.models.Disciplina;
-import com.rinq.models.Prova;
+import com.rinq.models.Notas;
 
 @Repository
-public interface ProvaRepository extends CrudRepository<Prova, Long> {
+public interface ProvaRepository extends CrudRepository<Notas, Long> {
     
-    Prova findByDiscenteAndDisciplina(Discente discente, Disciplina disciplina);
+    Notas findByDiscenteAndDisciplina(Discente discente, Disciplina disciplina);
 }

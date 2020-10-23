@@ -15,6 +15,8 @@ public interface DiscenteRepository extends CrudRepository<Discente, String>{
 	
 	Discente findByLogin(String login);
 	
+	Discente findByMatricula(String String);
+	
 	boolean existsByCpf(String cpf);
 	
 	boolean existsByLogin(String login);

@@ -10,6 +10,10 @@ public interface DocenteRepository extends CrudRepository<Docente, String>{
 	
 	Docente findByCpf(String cpf);
 	
+	Docente findByLogin(String login);
+	
 	boolean existsByCpf(String cpf);
+	
+	boolean existsByLogin(String login);
 	
 }

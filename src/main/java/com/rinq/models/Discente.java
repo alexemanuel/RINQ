@@ -32,7 +32,7 @@ public class Discente extends Usuario implements Comparable<Discente>{
 	private List<Falta> faltas;
 	
 	@OneToMany(mappedBy = "discente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Prova> provas;
+	private List<Notas> provas;
 	
 	public Discente() {}
 	
@@ -66,11 +66,11 @@ public class Discente extends Usuario implements Comparable<Discente>{
 		this.faltas = faltas;
 	}	
 	
-	public List<Prova> getProvas() {
+	public List<Notas> getProvas() {
 		return provas;
 	}
 
-	public void setProvas(List<Prova> provas) {
+	public void setProvas(List<Notas> provas) {
 		this.provas = provas;
 	}	
 

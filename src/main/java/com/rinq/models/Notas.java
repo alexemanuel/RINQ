@@ -3,7 +3,7 @@ package com.rinq.models;
 import javax.persistence.*;
 
 @Entity
-public class Prova {
+public class Notas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Prova {
     @JoinColumn(name = "id_disciplina")
     private Disciplina disciplina;
 
-    public Prova() {}
+    public Notas() {}
 
     public Long getId() {
         return id;

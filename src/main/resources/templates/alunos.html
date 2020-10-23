@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th = "https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/main/resources/static/css/alunoss.css">
+    <link rel="stylesheet" href="/css/alunos.css">
     <title>Alunos</title>
 </head>
 <body>
@@ -13,29 +13,25 @@
                 <a href="">
                     <img src="seta_icon.png" style="width:30px;height:30px;">
                 </a>
-            </div> -->
-        </div>
+            </div> 
+            </div>
+        -->
         <div class="main-container">
             
             <h1>Alunos</h1>
     
             <table class="grades" cellspacing=0>
                 <tr>
+                	<th>Número</th>
                     <th>Nome</th>
                     <th>Matrícula</th>
                     <th>Inserir Notas</th>
                 </tr>
-
-                <tr>
-                    <td>Aluno Teste Fibonniro Silva</td>
-                    <td>20202ADSPL021</td>
-                    <td><a href="">Inserir Notas</a></td>
-                </tr>
-
-                <tr>
-                    <td>Aluno Teste Henrique Fibonniro Silva</td>
-                    <td>20202ADSPL021</td>
-                    <td><a href="">Inserir Notas</a></td>
+                <tr th:each = "discente, indexStat : ${discentes}">
+                	<td th:text = "${indexStat.count}"></td>
+                    <td th:text = "${discente.nome}"></td>
+                    <td th:text = "${discente.matricula}"></td>
+                    <td><a th:href = "@{__${#httpServletRequest.requestURI}__/__${discente.matricula}__}">Inserir Notas</a></td>
                 </tr>
             </table>
         </div>

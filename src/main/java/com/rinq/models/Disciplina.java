@@ -1,5 +1,6 @@
 package com.rinq.models;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.*;
@@ -25,14 +26,13 @@ public class Disciplina {
     @JoinTable(name = "discente_disciplina", 
     		   joinColumns = {@JoinColumn(name = "id_disciplina")}, 
     		   inverseJoinColumns = {@JoinColumn(name = "cpf_discente")})
-//    		   inverseJoinColumns = {@JoinColumn(name = "discente", referencedColumnName = "matricula")})    
     private List<Discente> discentes;
 
     @OneToMany(mappedBy = "disciplina", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Aula> aulas;
 
     @OneToMany(mappedBy = "disciplina", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Prova> provas;
+    private List<Notas> provas;
 
     public Disciplina() {}
 
@@ -76,11 +76,11 @@ public class Disciplina {
         this.aulas = aulas;
     }
 
-    public List<Prova> getProvas() {
+    public List<Notas> getProvas() {
         return provas;
     }
 
-    public void setProvas(List<Prova> provas) {
+    public void setProvas(List<Notas> provas) {
         this.provas = provas;
     }
 
@@ -93,6 +93,7 @@ public class Disciplina {
     }
 
     public List<Discente> getDiscentes() {
+        Collections.sort(discentes); // Sort discentes by name attribute
         return discentes;
     }
 
@@ -112,5 +113,10 @@ public class Disciplina {
     
     public void addDiscente(Discente discente) {
     	this.discentes.add(discente);
+    }
+    
+    @Override
+    public String toString() {
+    	return nome;
     }
 }

@@ -6,26 +6,26 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rinq.models.PasswordResetToken;
+import com.rinq.models.PasswordUpdateToken;
 import com.rinq.models.Usuario;
-import com.rinq.repositories.PasswordResetTokenRepository;
+import com.rinq.repositories.PasswordUpdateTokenRepository;
 
 @Service
 public class PasswordResetTokenService {
 		
 	@Autowired
-	PasswordResetTokenRepository passwordResetTokenRepository;
+	PasswordUpdateTokenRepository passwordResetTokenRepository;
 	
-	public PasswordResetToken createToken(Usuario user) {
+	public PasswordUpdateToken generateToken(Usuario user) {
 		String tokenValue = UUID.randomUUID().toString();
-		PasswordResetToken passwordResetTokenObj = new PasswordResetToken(tokenValue, user);
+		PasswordUpdateToken passwordResetTokenObj = new PasswordUpdateToken(tokenValue, user);
 		
 		return passwordResetTokenObj;
 	}
 	
 	public boolean isValidToken(String tokenValue) {
 		Calendar calendar = Calendar.getInstance();		
-		PasswordResetToken passwordResetTokenObj = passwordResetTokenRepository.findByToken(tokenValue);
+		PasswordUpdateToken passwordResetTokenObj = passwordResetTokenRepository.findByTokenString(tokenValue);
 		
 		return passwordResetTokenObj != null && calendar.before(passwordResetTokenObj.getDataExperiracao());
 	}

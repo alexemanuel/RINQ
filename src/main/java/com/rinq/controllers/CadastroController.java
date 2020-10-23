@@ -16,13 +16,13 @@ import com.rinq.models.Curso;
 import com.rinq.models.Discente;
 import com.rinq.models.Disciplina;
 import com.rinq.models.Docente;
-import com.rinq.models.PasswordResetToken;
+import com.rinq.models.PasswordUpdateToken;
 import com.rinq.models.Usuario;
 import com.rinq.repositories.CursoRepository;
 import com.rinq.repositories.DiscenteRepository;
 import com.rinq.repositories.DisciplinaRepository;
 import com.rinq.repositories.DocenteRepository;
-import com.rinq.repositories.PasswordResetTokenRepository;
+import com.rinq.repositories.PasswordUpdateTokenRepository;
 import com.rinq.repositories.UsuarioRepository;
 import com.rinq.service.DTO.CadastroDTO;
 import com.rinq.service.matricula.MatriculaGenerator;
@@ -49,9 +49,8 @@ public class CadastroController {
 	CursoRepository cursoRepository;
 	@Autowired
 	DisciplinaRepository disciplinaRepository;
-	
 	@Autowired
-	PasswordResetTokenRepository passwordResetTokenRepository;
+	PasswordUpdateTokenRepository passwordResetTokenRepository;
 	
 	
 	@GetMapping("/cadastro")
@@ -62,27 +61,26 @@ public class CadastroController {
 	}
 	
 	@PostMapping("/cadastro")
-	public String registeUser(@ModelAttribute CadastroDTO cadastroDTO, Model model) throws MessagingException, IOException {
-		String userFuncao = cadastroDTO.getFuncao(); // User's Role (Docente, Discente, Administrador)
+	public String registeUser(@ModelAttribute CadastroDTO DTO, Model model) throws MessagingException, IOException {
+		String userFuncao = DTO.getFuncao(); // User's Role (Docente, Discente, Administrador)
 		
 				
-		if(usuarioRepository.existsByCpf(cadastroDTO.getCpf())) {
+		if(usuarioRepository.existsByCpf(DTO.getCpf())) {
 			return "redirect:/cadastro?error";
 		
 		}else {			
-			cadastroDTO.setCurso(cursoRepository.findByNome(cadastroDTO.getNomeCurso()));
-			cadastroDTO.setDisciplina(disciplinaRepository.findByNome(cadastroDTO.getNomeDisciplina()));
+			DTO.setCurso(cursoRepository.findByNome(DTO.getNomeCurso()));
+			DTO.setDisciplina(disciplinaRepository.findByNome(DTO.getNomeDisciplina()));
 			
-			Curso curso = cadastroDTO.getCurso();
+			Curso curso = DTO.getCurso();
 			
 			if(userFuncao.equals("discente")) {
-				int discenteNumber = discenteRepository.countByCurso(curso);
+				int discenteNumber = discenteRepository.countByCurso(curso);	
 				
-				String matricula = MatriculaGenerator.generateMatricula(curso.getNome(), discenteNumber);
-				cadastroDTO.setMatricula(matricula);
+				String matricula = MatriculaGenerator.generateMatricula(curso.getNome(), discenteNumber);	
+				DTO.setMatricula(matricula);
 				
-				Discente discente = new Discente(cadastroDTO);			
-				
+				Discente discente = new Discente(DTO);			
 				List<Disciplina> disciplinas = disciplinaRepository.findByCurso(curso);
 				
 				// Set disciplinas in discente and dicente in disciplinas
@@ -92,15 +90,19 @@ public class CadastroController {
 				discenteRepository.save(discente);
 				
 			}else {				
-				Docente docente = new Docente(cadastroDTO);
+				Docente docente = new Docente(DTO);
 				docenteRepository.save(docente);
 			}
 			
 			// Create reset/initialize password token, and send it throught email
-			PasswordResetToken passwordResetToken = passwordResetTokenService.createToken(new Usuario(cadastroDTO));
+			PasswordUpdateToken passwordResetToken = passwordResetTokenService.generateToken(new Usuario(DTO));
 			passwordResetTokenRepository.save(passwordResetToken);
 			
-			mailService.sendMail(cadastroDTO.getNome(), cadastroDTO.getEmail(), "Bem-Vindo ao RINQ", "welcome_email.html", passwordResetToken.getToken());
+			String nomeUsuario  = DTO.getNome();
+			String emailUsuario = DTO.getEmail();
+			String tokenString  = passwordResetToken.getTokenString();
+			
+			mailService.sendMail(nomeUsuario, emailUsuario, "Bem-Vindo ao RINQ", "welcome_email.html", tokenString);
 		}
 		
 		model.addAttribute("DTO", cadastroDTO);

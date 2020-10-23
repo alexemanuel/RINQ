@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.rinq.models.DataTransferObject;
-import com.rinq.models.PasswordResetToken;
+import com.rinq.models.PasswordUpdateToken;
 import com.rinq.models.Usuario;
-import com.rinq.repositories.PasswordResetTokenRepository;
+import com.rinq.repositories.PasswordUpdateTokenRepository;
 import com.rinq.repositories.UsuarioRepository;
+import com.rinq.service.DTO.AtualizarSenhaDTO;
 import com.rinq.services.mail.MailService;
 import com.rinq.services.security.PasswordResetTokenService;
 
@@ -25,70 +25,71 @@ public class AtualizarSenhaController {
 	@Autowired
 	MailService mailService;
 	@Autowired
+	PasswordResetTokenService passwordResetTokenService;
+	
+	@Autowired
 	UsuarioRepository usuarioRepository;
 	@Autowired
-	PasswordResetTokenRepository passwordResetTokenRepository;
-	@Autowired
-	PasswordResetTokenService passwordResetTokenService;
+	PasswordUpdateTokenRepository passwordResetTokenRepository;
 	
 	@GetMapping("/esqueci_senha")
 	public String showEmailForm(Model model) {
 		
-		model.addAttribute("DTO", new DataTransferObject());
+		model.addAttribute("DTO", new AtualizarSenhaDTO());
 		return "esqueci_senha";
 	}
 	
 	@PostMapping("/esqueci_senha")
-	public String checkEmailValidty(Model model, DataTransferObject DTO) throws MessagingException, IOException {
-		String email = DTO.getEmail();
-		Usuario user = usuarioRepository.findByEmail(email);
+	public String checkEmailValidty(Model model, AtualizarSenhaDTO DTO) throws MessagingException, IOException {
+		Usuario usuario = usuarioRepository.findByLogin(DTO.getLogin());
 				
-		if(user == null) {
-			model.addAttribute("DTO", new DataTransferObject());
+		if(usuario == null) {
+			model.addAttribute("DTO", new AtualizarSenhaDTO());
 			return "redirect:/esqueci_senha?error";
 		}
-		
-		PasswordResetToken passwordResetToken = passwordResetTokenService.createToken(user);
+		PasswordUpdateToken passwordResetToken = passwordResetTokenService.generateToken(usuario);
 		passwordResetTokenRepository.save(passwordResetToken);
-				
-		mailService.sendMail(user.getNome(), email, "Troca de Senha", "reset_password_email.html", passwordResetToken.getToken());
+		
+		String nomeUsuario  = usuario.getNome();
+		String emailUsuario = usuario.getEmail();
+		String tokenString  = passwordResetToken.getTokenString();
+		
+		mailService.sendMail(nomeUsuario, emailUsuario, "Troca de Senha", "reset_password_email.html", tokenString);
 		
 		return "redirect:/";
 	}
 	
 	@GetMapping("/trocar_senha")
-	public String showChangePasswordPage(@RequestParam("token") String tokenValue, Model model) {
+	public String showChangePasswordPage(@RequestParam("token") String tokenString, Model model) {
 
-		boolean tokenValidty = passwordResetTokenService.isValidToken(tokenValue);
+		boolean tokenValidty = passwordResetTokenService.isValidToken(tokenString);
 		
 		if(tokenValidty) {
-			DataTransferObject DTO = new DataTransferObject();
-			PasswordResetToken passwordResetToken = passwordResetTokenRepository.findByToken(tokenValue);
+			AtualizarSenhaDTO DTO = new AtualizarSenhaDTO();
+			PasswordUpdateToken passwordResetToken = passwordResetTokenRepository.findByTokenString(tokenString);
 			
 			DTO.setToken(passwordResetToken);
-
 			model.addAttribute("DTO", DTO);
+			
 			return "trocar_senha";
-		}
-		
-		passwordResetTokenRepository.deleteByToken(tokenValue);		
+		}		
+		passwordResetTokenRepository.deleteByTokenString(tokenString);		
 		return "redirect:/";
 	}
 	
 	@PostMapping("/trocar_senha")
-	public String updateUserPassword(DataTransferObject DTO) {
+	public String updateUserPassword(AtualizarSenhaDTO DTO) {
 		
-		PasswordResetToken token = DTO.getToken();
-		String tokenValue = token.getToken();
+		PasswordUpdateToken token = DTO.getToken();
+		String tokenString = token.getTokenString();
 			
-		Usuario user = token.getUser();
-		user.setSenha(DTO.getPassword());	
+		Usuario usuario = token.getUsuario();
+		usuario.setSenha(DTO.getPassword());	
 		
-		usuarioRepository.save(user);
-		passwordResetTokenRepository.deleteByToken(tokenValue);		
+		usuarioRepository.save(usuario);
+		passwordResetTokenRepository.deleteByTokenString(tokenString);		
 		
 		return "redirect:/";
 	}
-	
 }
 

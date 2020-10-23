@@ -1,7 +1,6 @@
 package com.rinq.controllers;
 
 import java.security.Principal;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,14 +46,13 @@ public class FaltasController {
 	
 	@GetMapping("/chamada")
 	public String showDiscenteList(Model model, Principal principal) {
-		String cpf = principal.getName();
+		String login = principal.getName();
 			
-		if(docenteRepository.existsByCpf(cpf)){
-			Docente docente = docenteRepository.findByCpf(cpf);
+		if(docenteRepository.existsByLogin(login)){
+			Docente docente = docenteRepository.findByLogin(login);
 			Disciplina disciplina = docente.getDisciplina();
 			
 			List<Discente> discentes = disciplina.getDiscentes();			
-			Collections.sort(discentes); // Sort discentes by name attribute
 			
 			Aula aula = new Aula();
 			aula.setDisciplina(disciplina);
@@ -71,7 +69,7 @@ public class FaltasController {
 	}
 	
 	@PostMapping("/chamada")
-	public String absenceManage(AulaDTO aulaDTO, FaltaDTO faltaDTO) {
+	public String manageAbsences(AulaDTO aulaDTO, FaltaDTO faltaDTO) {
 		List<Falta> faltas = faltaDTO.getFaltas();
 		Aula aula = aulaDTO.getAula();
 		
