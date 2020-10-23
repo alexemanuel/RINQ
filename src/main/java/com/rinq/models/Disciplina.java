@@ -10,20 +10,23 @@ public class Disciplina {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+    @Column(nullable = false, length = 100)
     private String nome;
+    @Column(nullable = false)
     private int cargaHoraria;
 
     @ManyToOne
+    @JoinColumn(name = "id_curso")
     private Curso curso;
 
     @OneToOne(mappedBy = "disciplina", targetEntity = Docente.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Docente docente;
 
     @ManyToMany
-    @JoinTable(name = "Discente_Disciplina", joinColumns =
-            {@JoinColumn(name = "id_disciplina")}, inverseJoinColumns =
-            {@JoinColumn(name = "discente", referencedColumnName = "matricula")})
+    @JoinTable(name = "discente_disciplina", 
+    		   joinColumns = {@JoinColumn(name = "id_disciplina")}, 
+    		   inverseJoinColumns = {@JoinColumn(name = "cpf_discente")})
+//    		   inverseJoinColumns = {@JoinColumn(name = "discente", referencedColumnName = "matricula")})    
     private List<Discente> discentes;
 
     @OneToMany(mappedBy = "disciplina", targetEntity = Aula.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -106,5 +109,9 @@ public class Disciplina {
     public void removeAula(Aula aula){
         this.aulas.remove(aula);
         aula.setDisciplina(null);
+    }
+    
+    public void addDiscente(Discente discente) {
+    	this.discentes.add(discente);
     }
 }

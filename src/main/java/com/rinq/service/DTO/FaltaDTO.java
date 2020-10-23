@@ -1,20 +1,18 @@
-package com.rinq.models.DTO;
+package com.rinq.service.DTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.rinq.models.Discente;
+import com.rinq.models.Disciplina;
 import com.rinq.models.Falta;
 
+@Service
 public class FaltaDTO {
 	
-	private List<Falta> faltas = new ArrayList<Falta>();
-	
-	public FaltaDTO() {}
-
-	public FaltaDTO(List<Discente> discentes) {
-		initializeFaltaList(discentes);
-	}
+	private List<Falta> faltas;
 	
 	public List<Falta> getFaltas() {
 		return faltas;
@@ -28,11 +26,14 @@ public class FaltaDTO {
 		faltas.add(falta);
 	}
 	
-	private void initializeFaltaList(List<Discente> discentes) {
-				
+	public void initializeFaltaList(List<Discente> discentes, Disciplina disciplina) {
+		faltas = new ArrayList<Falta>();
+		
 		for(Discente discente: discentes) {
 			Falta falta = new Falta();
+			
 			falta.setDiscente(discente);
+			falta.setDisciplina(disciplina);
 			
 			faltas.add(falta);
 		}

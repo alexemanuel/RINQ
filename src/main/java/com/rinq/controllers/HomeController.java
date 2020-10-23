@@ -18,8 +18,9 @@ public class HomeController {
 	
 	@GetMapping({"/", "/home"})
 	public String home(Principal principal){
-		Usuario authenticatedUser = usuarioReposiory.findByCpf(principal.getName());	
-		// Directs the user to the proper home page
+		Usuario authenticatedUser = usuarioReposiory.findByLogin(principal.getName());	
+		
+		// Directs the user to the proper home page. home_<role>.html
 		return String.format("home_%s", authenticatedUser.getFuncao());
 	}
 }

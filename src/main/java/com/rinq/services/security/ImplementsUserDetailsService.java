@@ -17,8 +17,8 @@ public class ImplementsUserDetailsService implements UserDetailsService{
 	private UsuarioRepository usuarioRepository;
 	
 	@Override
-	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-		Usuario user = usuarioRepository.findByCpf(login);
+	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {		
+		Usuario user = usuarioRepository.findByLogin(login);
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("User does not exist!");

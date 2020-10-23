@@ -8,25 +8,20 @@ public class Prova {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = true)
+
     private Float prova1;
-    @Column(nullable = true)
     private Float recuperacao1;
-    @Column(nullable = true)
     private Float prova2;
-    @Column(nullable = true)
     private Float recuperacao2;
-    @Column(nullable = true)
-    private Float media;
-    @Column(nullable = true)
+    private Float mediaFinal;
     private Float recuperacaoFinal;
 
     @ManyToOne
-    @JoinColumn(name = "discente", referencedColumnName = "cpf")
-    private Usuario discente;
+    @JoinColumn(name = "matricula_discente", referencedColumnName = "matricula")
+    private Discente discente;
 
     @ManyToOne
-    @JoinColumn(name = "disciplina")
+    @JoinColumn(name = "id_disciplina")
     private Disciplina disciplina;
 
     public Prova() {}
@@ -71,12 +66,12 @@ public class Prova {
         this.recuperacao2 = recuperacao2;
     }
 
-    public Float getMedia() {
-        return media;
+    public Float getMediaFinal() {
+        return mediaFinal;
     }
 
-    public void setMedia(Float media) {
-        this.media = media;
+    public void setMediaFinal(Float mediaFinal) {
+        this.mediaFinal = mediaFinal;
     }
 
     public Float getRecuperacaoFinal() {
@@ -87,11 +82,11 @@ public class Prova {
         this.recuperacaoFinal = recuperacaoFinal;
     }
 
-    public Usuario getDiscente() {
+    public Discente getDiscente() {
         return discente;
     }
 
-    public void setDiscente(Usuario discente) {
+    public void setDiscente(Discente discente) {
         this.discente = discente;
     }
 

@@ -9,9 +9,6 @@
         <script type = "text/javascript" src = "/javascript/jquery-3.4.1.min.js"></script>
         <script type = "text/javascript" src = "/javascript/bootstrap.min.js"></script>
         <script type = "text/javascript" src = "/javascript/jquery.mask.min.js"></script>
-        <script type = "text/javascript">
-            $(document).ready(function(){$("#id_CPF").mask("000.000.000-00")})
-        </script>
     </head>
     <body>
     	<form th:action = "@{/login}" th:method = "post">
@@ -19,7 +16,7 @@
             	<div id = "login_box_label">
                    Login
                 	<div class = "input-div" id = "imput_usuario">
-                    	<input name = "username" class = "form-control" id = "id_CPF" required = "required" maxlength = "11" minlength = "11" placeholder = "Informe seu CPF" type ="text" >   
+                    	<input name = "username" class = "form-control" id = "id_CPF" required = "required" maxlength = "11" minlength = "11" placeholder = "Informe seu login" type ="text" >   
                 	</div>
                 	<div class = "input-div" id = "imput_senha">
                     	<input type = "password" class = "form-control" name = "password" minlength = "6" required = "required" placeholder = "Informe sua senha">

@@ -9,8 +9,9 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+    @Column(nullable = false, length = 100)
     private String nome;
+    @Column(nullable = false, length = 6)
     private String turno;
     
     @OneToMany(mappedBy = "curso", targetEntity = Disciplina.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -30,7 +31,7 @@ public class Curso {
         return nome;
     }
 
-    public void setName(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 

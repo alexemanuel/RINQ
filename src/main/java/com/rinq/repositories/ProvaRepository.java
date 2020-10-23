@@ -1,10 +1,14 @@
 package com.rinq.repositories;
 
-import com.rinq.models.Prova;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+import com.rinq.models.Discente;
+import com.rinq.models.Disciplina;
+import com.rinq.models.Prova;
 
+@Repository
 public interface ProvaRepository extends CrudRepository<Prova, Long> {
-
-    Prova findByDiscente(String discente);
+    
+    Prova findByDiscenteAndDisciplina(Discente discente, Disciplina disciplina);
 }

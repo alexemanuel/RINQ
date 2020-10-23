@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@700&display=swap");
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    
+}
+
+a{
+    text-decoration: none;
+}
+h1, h2, h3, h4 {
+    color: #555555;
+}
+
+
+html,
+body {
+    
+    font-family: Roboto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+body{
+    background-color:#3cb371;
+
+}
+main .main-container {
+
+    display: flex;
+    flex-direction: column;
+
+    max-width: 800px;
+    height: 100vh;
+    margin: 24px auto;
+    padding: 40px;
+    border-radius: 5px;
+    
+    background-color: #F0F8FF;
+    width: 90%;
+   box-shadow: 0px 0px 30px;
+}
+
+main .grades {
+    width: 90%;
+    margin: 54px auto;
+}
+
+ main .grades th,td {
+   
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 8px;
+
+    
+}
+
+main .grades th {
+    color: #555555;
+    font-weight: bold;
+    background-color: #1cdf74bd;
+}
+
+main .grades a {
+    text-decoration: underline;
+    color:#1CDF74;
+}

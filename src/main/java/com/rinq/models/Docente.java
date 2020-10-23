@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.rinq.service.DTO.CadastroDTO;
+
 
 @Entity
 public class Docente extends Usuario{
@@ -11,8 +13,10 @@ public class Docente extends Usuario{
 	private static final long serialVersionUID = 1L;
 	
 	@OneToOne
+	@JoinColumn(name = "id_curso")
 	private Curso curso;
 
+	@Column(nullable = false, length = 9)
 	private String siape;
 
 	@OneToOne
@@ -24,11 +28,11 @@ public class Docente extends Usuario{
 	
 	public Docente() {}
 	
-	public Docente(DataTransferObject DTO, Curso curso) {
+	public Docente(CadastroDTO DTO) {
 		super(DTO);
 		this.siape = DTO.getSiape(); 
-		//this.disciplina = DTO.getSubject();
-		this.curso = curso;
+		this.disciplina = DTO.getDisciplina();
+		this.curso = DTO.getCurso();
 	}
 
 	public Curso getCurso() {

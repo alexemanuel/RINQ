@@ -3,17 +3,7 @@ package com.rinq.models;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 @Entity
 public class Aula {
@@ -23,9 +13,11 @@ public class Aula {
     private Long id;
     
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Date data;
-    
+
     private String observacao;
+    @Column(nullable = false)
     private Integer quantidade;
 
     @ManyToOne

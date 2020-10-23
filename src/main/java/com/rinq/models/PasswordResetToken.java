@@ -1,7 +1,6 @@
 package com.rinq.models;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,25 +13,25 @@ import javax.persistence.OneToOne;
 @Entity
 public class PasswordResetToken {
 	
-	private static final int EXPIRATION_TIME = 10; //Minutes
+	private static final int TEMPO_EXPIRACAO = 10; //Minutes
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "cpf_usario")
+	@JoinColumn(name = "cpf_usuario")
 	private Usuario user;
 	
 	private String token;
-	private Calendar experyDate;
+	private Calendar dataExperiracao;
 	
 	public PasswordResetToken() {}
 	
 	public PasswordResetToken(String token, Usuario user) {
 		this.token = token;
 		this.user = user;
-		this.experyDate = calcExperyDate();
+		this.dataExperiracao = calcExperyDate();
 	}
 
 	public String getToken() {
@@ -43,14 +42,6 @@ public class PasswordResetToken {
 		this.token = token;
 	}
 
-	public Calendar getExperyDate() {
-		return experyDate;
-	}
-
-	public void setExperyDate(Calendar experyDate) {
-		this.experyDate = experyDate;
-	}
-	
 	public Usuario getUser() {
 		return user;
 	}
@@ -61,8 +52,16 @@ public class PasswordResetToken {
 	
 	private Calendar calcExperyDate() {
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + EXPIRATION_TIME);
+		calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + TEMPO_EXPIRACAO);
 		
 		return calendar;
+	}
+
+	public Calendar getDataExperiracao() {
+		return dataExperiracao;
+	}
+
+	public void setDataExperiracao(Calendar dataExpericao) {
+		this.dataExperiracao = dataExpericao;
 	}
 }
