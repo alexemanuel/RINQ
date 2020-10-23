@@ -53,11 +53,18 @@
         top:230px;
         margin-left:150px;
         }
-     #botoes{
+      #botao{
     	margin-top:20px;
 	position: absolute;
         top:300px;
-        margin-left:350px;
+        margin-left:-50px;
+	width:80px;
+        font: bold 17px/45px;
+        padding: 1px;
+        color: white;
+        background-color: #1CDF74 ;
+        border-radius: 5px;
+        border: none;
 	
        }  
 

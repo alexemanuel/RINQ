@@ -49,13 +49,21 @@ body{
         margin-left:120px;
         }
 
-    #botoes{
-        position: absolute;
-        top:260px;
-        margin-left:250px;
-        width:10px;
-         font: bold 17px/45px sans-serif ;
-        }
+   #botao{
+    	margin-top:20px;
+	position: absolute;
+        top:250px;
+        margin-left:-50px;
+	width:80px;
+        font: bold 17px/45px;
+        padding: 1px;
+        color: white;
+        background-color: #1CDF74 ;
+        border-radius: 5px;
+        border: none;
+	
+       }  
+
 	#erro{
          position: absolute;
          top:250px;
