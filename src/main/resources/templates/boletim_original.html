@@ -5,22 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOLETIM</title>
     
-    <link rel="stylesheet" href="/src/main/resources/static/css/boletim.css">
+    <link rel="stylesheet" href="css/boletim.css">
 </head>
 <body>
 
     <main>
         <div class="main-container">
-            <section class="main-header">
-                <div class="img">
-                    <img src="../static/images/report_card.svg" alt="report_card">
-                    <h2>BOLETIM</h2>
-                </div>
-                
-                <h2>Aluno Teste Fibonniro Silva</h2>
-            </section>
 
-            <section class="overals">
+            <div id="login_box_label">
+                    <a href="home_docente.html" id="seta">
+                        <img src="images/seta.png" style="width:30px;height:30px;"/>
+                    </a>
+                <label id="aluno">Aluno <label></label></label>
+
+            </div>
+            <div id="imagem">
+                <img src="images/boletim1.png" style="width:200px;height:80px;"/>
+
+            </div>
+
+
+            <section class="overals" id="grade1">
+
                 <h4>Ano: 2020</h4>
                 <h4>Período: 2</h4>
                 <h4>Média das disciplinas: 10</h4>
@@ -29,7 +35,7 @@
                 <h4>Situação: Matrículado</h4>
             </section>
 
-            <table class="grades">
+            <table class="grades" id="grade2">
                 <tr>
                     <th>Componente Curricular</th>
                     <th>CH</th>

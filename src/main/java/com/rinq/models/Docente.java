@@ -2,12 +2,7 @@ package com.rinq.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import com.rinq.service.DTO.CadastroDTO;
 
@@ -21,6 +16,7 @@ public class Docente extends Usuario{
 	@JoinColumn(name = "id_curso")
 	private Curso curso;
 
+	@Column(nullable = false, length = 9)
 	private String siape;
 
 	@OneToOne

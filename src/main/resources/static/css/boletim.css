@@ -30,34 +30,67 @@ h1, h2, h3, h4 {
 body{
    background-color:#3cb371;
 }
+#login_box_label{
+        background:#DCDCDC;
+        width:970px;
+        height:50px;
+        font: bold 15px/45px sans-serif ;
+        border-bottom: 1px solid #C0C0C0;
+        box-shadow: 1px 0px 3px #A9A9A9;
+        color:#555555;
+
+     }
+#seta{
+position: absolute;
+top:58px;
+margin-left:8px;
+}
+#aluno{
+position: absolute;
+top:50px;
+margin-left:600px;
+font: bold 20px/45px sans-serif ;
+color:black;
+}
+#imagem{
+position: absolute;
+top:120px;
+margin-left:45px;
+}
+#grade1{
+position: absolute;
+top:200px;
+margin-left:120px;
+}
+#grade2{
+position: absolute;
+top:360px;
+margin-left:50px;
+}
 
 main .main-container {
 
    display: flex;
-   flex-direction: column;
-   
+      flex-direction: column;
+      background-color: #F0F8FF;
+      width: 90%;
+      max-width: 970px;
+      height: 100vh;
+      margin: 40px auto;
+      border-radius: 5px;
 
-   background-color: #F0F8FF;
-   width: 90%;
-   max-width: 970px;
-   height: 100vh;
-   
-   margin: 40px auto;
-   border-radius: 5px;
-   
-   
+
 }
 
 main .main-header {
    display: flex;
-   align-items: center;
-   justify-content: space-between;
+      align-items: center;
+      justify-content: space-between;
 
-   font-weight: 700;
+      font-weight: 700px;
 
-   height: 250px;
-   padding-right: 27px;
-   
+      height: 250px;
+      padding-right: 27px;
 }
 
 main .main-header .img {
@@ -72,7 +105,7 @@ main .overals {
    grid-gap: 30px;
 
    max-width: 900px;
-   margin: 25px auto;    
+   margin: 25px auto;
 }
 
 
@@ -81,22 +114,22 @@ main .overals h4{
    background-color: white;
    border-radius: 10px;
    padding: 5px;
-  
+
 }
 
 
 .grades {
-   width: 90%;
+   width: 65%;
    margin: 24px auto;
 }
 
 
 .grades th,td {
-   
+
    border: 1px solid var(--title-color) ;
    border-collapse: collapse;
    text-align: center;
-   padding: 8px;
+   padding: 2px;
 }    
 .grades th{
    background-color: #e5e5e5;

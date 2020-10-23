@@ -8,17 +8,12 @@ public class Notas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = true)
+
     private Float prova1;
-    @Column(nullable = true)
     private Float recuperacao1;
-    @Column(nullable = true)
     private Float prova2;
-    @Column(nullable = true)
     private Float recuperacao2;
-    @Column(nullable = true)
     private Float mediaFinal;
-    @Column(nullable = true)
     private Float recuperacaoFinal;
 
     @ManyToOne
