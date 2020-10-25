@@ -1,22 +1,41 @@
-function generateSubjects() {
-	const subjectSelect = document.getElementById("cadeira")
+function changeSubjects(){
+    const course   = selectCoursesTag.value;
+    const subjects = courses_to_subjects[course];
 
-    var subjects = ["Engenharia de Software", "Arquitetura de Software", "POO"];
-
-    for( const subject of subjects ) {
-        subjectSelect.innerHTML += ` <option th:value = "${subject}" selected>${subject}</option> `
-    }	
+    setSubjects(subjects);
 }
-generateSubjects()
 
-function generateCourses() {
-	const courseSelect = document.getElementById("curso")
+function setSubjects(subjects){
+    var innerHTML = "";
 
-    var courses = ["Administração", "MSI", "ADS", ];
-
-    for( const course of courses ) {
-        courseSelect.innerHTML += ` <option th:value = "${course}" selected>${course}</option> `
-    }
+    subjects.forEach(subject => innerHTML += `<option th:value = "${subject}">${subject}</option>`);
+    selectSubjectsTag.innerHTML = innerHTML;
 }
-generateCourses()
+
+courses_to_subjects = {
+    "ADS":
+        [
+            "Empreendedorismo em Negócios de TIC",
+            "Iniciação à Informática",
+            "Matemática Aplicada",
+            "Língua Inglesa Aplicada",
+            "Introdução à Programação",
+            "Ética e Responsabilidade Socioambiental",
+        ],
+
+    "MSI":
+        [
+            "Informática Básica",
+            "Português Instrumental",
+            "Inglês Instrumental",
+            "Lógica de Programação",
+            "Eletricidade Básica I",
+            "Direitos Humanos, Ética Profissional e Cidadania",
+        ],
+};
+
+selectSubjectsTag = document.getElementById("cadeira");
+selectCoursesTag  = document.getElementById("curso");
+
+changeSubjects();
 
