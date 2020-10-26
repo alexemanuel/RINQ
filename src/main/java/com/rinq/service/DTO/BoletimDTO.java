@@ -8,15 +8,16 @@ import org.springframework.stereotype.Service;
 
 import com.rinq.models.Discente;
 import com.rinq.models.Disciplina;
+import com.rinq.models.Falta;
 import com.rinq.models.Notas;
 import com.rinq.repositories.FaltaRepository;
-import com.rinq.repositories.ProvaRepository;
+import com.rinq.repositories.NotasRepository;
 
 @Service
 public class BoletimDTO {
 
 	@Autowired
-	ProvaRepository provaRepository;
+	NotasRepository provaRepository;
 	@Autowired
 	FaltaRepository faltaRepository;
 
@@ -81,12 +82,13 @@ public class BoletimDTO {
 			Notas notas = provaRepository.findByDiscenteAndDisciplina(discente, disciplina);
 			
 			if(notas != null) {
-				nota1 = (notas.getProva1() != null) ? Float.toString(notas.getProva1()) : "";
-				nota2 = (notas.getProva2() != null) ? Float.toString(notas.getProva2()) : "";
+				nota1 = (notas.getMediaSemestre1() != null) ? Float.toString(notas.getMediaSemestre1()) : "";
+				nota2 = (notas.getMediaSemestre2() != null) ? Float.toString(notas.getMediaSemestre2()) : "";
 				mediaFinal = (notas.getMediaFinal() != null) ? Float.toString(notas.getMediaFinal()) : "";
 			}
 						
-			int totalFaltas = faltaRepository.countByDiscenteAndDisciplina(discente, disciplina);
+			List<Falta> faltas = faltaRepository.findByDiscenteAndDisciplina(discente, disciplina);
+			int totalFaltas = countTotalFaltas(faltas);
 						
 			EntradaBoletimDTO entradaBoletim = new EntradaBoletimDTO(nomeDisciplina, cargaHorariaDisciplina, nota1, nota2, mediaFinal, totalFaltas);			
 			entradasBoletim.add(entradaBoletim);				
@@ -133,6 +135,15 @@ public class BoletimDTO {
 		}
 		
 		setCoeficienteRendimento(coeficienteRendimento);
+	}
+	
+	private int countTotalFaltas(List<Falta> faltas) {
+		int totalFaltas = 0;
+		
+		for(Falta falta: faltas) {
+			totalFaltas += falta.getQuantidadeFaltas();
+		}
+		return totalFaltas;
 	}
 }
 

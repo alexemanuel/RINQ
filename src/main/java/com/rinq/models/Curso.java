@@ -9,8 +9,13 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @Column(nullable = false, length = 100)
     private String nome;
+    
+    @Column(nullable = false, length = 3)
+    private String abreviacao;
+    
     @Column(nullable = false, length = 6)
     private String turno;
     
@@ -50,14 +55,12 @@ public class Curso {
     public void setDisciplinas(List<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
     }
-
-    public void addDisciplina(Disciplina disciplina){
-        this.disciplinas.add(disciplina);
-        disciplina.setCurso(this);
+    
+    public String getAbreviacao() {
+    	return abreviacao;
     }
-
-    public void removeDisciplina(Disciplina disciplina){
-        this.disciplinas.remove(disciplina);
-        disciplina.setCurso(null);
+    
+    public void setAbreviacao(String abreviacao) {
+    	this.abreviacao = abreviacao;
     }
 }

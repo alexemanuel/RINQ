@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th = "https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim</title>
+    
+    <link rel="stylesheet" href="/css/boletim.css">
+</head>
+<body>
+    <main>
+        <div class="main-container">
+
+            <div id="login_box_label">
+                    <a href="home" id="seta">
+                        <img src="images/seta_icon.png" style="width:30px;height:30px;"/>
+                    </a>
+                <label id="aluno" th:text = "|Aluno: ${DTO.nomeDiscente}|"></label>
+            </div>
+            <div id="imagem">
+                <img src="images/boletim_layout.png" style="width:200px;height:80px;"/>
+
+            </div>
+
+            <section class="overals" id="grade1">
+              	<h4>Ano: 2020</h4>
+                <h4>Período: 2</h4>
+                <h4 th:text = "|Média das disciplinas: ${DTO.mediaDisciplinas}"></h4>
+                <h4 th:text = "|Rendimento ${DTO.coeficienteRendimento}"></h4>
+                <h4 th:text = "|Coeficiente de rendimento: ${DTO.coeficienteRendimento}"></h4>
+                <h4>Situação: Matrículado</h4>
+            </section>
+
+            <table class="grades" id="grade2">
+                <tr>
+                    <th>Componente Curricular</th>
+                    <th>CH</th>
+                    <th>Nota UNI1</th>
+                    <th>Nota UNI2</th>
+                    <th>Média Final</th>
+                    <th>Total Faltas</th>
+                </tr>
+                <tr th:each = "entradaBoletim : ${DTO.entradasBoletim}">
+               		<td th:text = "${entradaBoletim.nomeDisciplina}">
+               		<td th:text = "${entradaBoletim.cargaHorariaDisciplina}">
+               		<td th:text = "${entradaBoletim.nota1}">
+               		<td th:text = "${entradaBoletim.nota2}">
+               		<td th:text = "${entradaBoletim.mediaFinal}">
+               		<td th:text = "${entradaBoletim.totalFaltas}">
+               </tr>        
+            </table>
+        </div>
+    </main>
+</body>
+</html>

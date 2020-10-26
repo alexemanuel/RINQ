@@ -9,13 +9,14 @@ import com.rinq.models.Disciplina;
 public class CadastroDTO {
 	
 	// General User Attributes
+	
 	private String nome;
 	private String email;
 	private String cpf;
 	private String funcao;
 	
 	// Docente and Discente Atrributes
-	private String nomeCurso;
+	private String abreviacaoCurso;
 	private Curso curso;
 	
 	// Only Docente Attributes
@@ -25,14 +26,6 @@ public class CadastroDTO {
 	
 	// Only Discente Attributes
 	private String matricula;
-	
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	public String getEmail() {
 		return email;
@@ -82,14 +75,6 @@ public class CadastroDTO {
 		this.siape = siape;
 	}
 
-	public String getNomeCurso() {
-		return nomeCurso;
-	}
-
-	public void setNomeCurso(String nomeCurso) {
-		this.nomeCurso = nomeCurso;
-	}
-
 	public String getNomeDisciplina() {
 		return nomeDisciplina;
 	}
@@ -104,5 +89,21 @@ public class CadastroDTO {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
+	}
+
+	public String getAbreviacaoCurso() {
+		return abreviacaoCurso;
+	}
+
+	public void setAbreviacaoCurso(String abreviacaoCurso) {
+		this.abreviacaoCurso = abreviacaoCurso;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 }

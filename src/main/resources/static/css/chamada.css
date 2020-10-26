@@ -4,7 +4,7 @@ body{
      #login_box{
         background: #F0F8FF;
         width:800px;
-        height:1000px;
+        height:900px;
         margin:50px auto 0px;
         border-radius:5px;
         box-shadow: 0px 0px 30px;
@@ -43,7 +43,7 @@ body{
     #botao1{
     	margin-top:30px;
 	    position: absolute;
-        top:900px;
+        top:860px;
         margin-left:600px;
         width:100px;
         font: bold 17px/45px;
@@ -53,31 +53,44 @@ body{
         border-radius: 4px;
         border: none;
     }
-
+    #botao2{
+        margin-top:30px;
+	    position: absolute;
+        top:860px;
+        margin-left:660px;
+        width:100px;
+        font: bold 17px/45px;
+        padding: 10px;
+        color: white;
+        background-color:#ff4040;
+        border-radius: 4px;
+        border: none;
+    }
     #imput_data{
         position: absolute;
-
-         top:800px;
-         margin-left:135px;
+         top:740px;
+         margin-left:95px;
          font: bold 17px/45px sans-serif ;
     }
     #date{
     font: bold 13px/45px sans-serif ;
+	height: 20px;
     }
 
       #label_obs{
       position: absolute;
-      top:860px;
-      margin-left:140px;
+      top:800px;
+      margin-left:165px;
       font: bold 17px/45px sans-serif ;
 
 
       }
       #id_obs{
       position: absolute;
-      top:900px;
-      margin-left:140px;
-      font: bold 17px/45px sans-serif ;
+      top:840px;
+      margin-left:95px;
+      font: bold 14px/14px sans-serif ;
+	  width: 100px;
       Word-wrap:break-Word;
       width:250px;
       height:80px;

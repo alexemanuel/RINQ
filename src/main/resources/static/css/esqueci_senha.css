@@ -54,12 +54,13 @@ body{
 	position: absolute;
         top:250px;
         margin-left:-50px;
-	width:80px;
+		width:80px;
         font: bold 17px/45px;
         padding: 1px;
         color: white;
         background-color: #1CDF74 ;
         border-radius: 5px;
+        height: 30px;
         border: none;
 	
        }  

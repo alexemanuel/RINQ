@@ -8,18 +8,8 @@
 </head>
 <body>
     <main>
-        <!-- <div class="box-label">
-            <div class="home">
-                <a href="">
-                    <img src="seta_icon.png" style="width:30px;height:30px;">
-                </a>
-            </div> 
-            </div>
-        -->
-        <div class="main-container">
-            
+        <div class="main-container">    
             <h1>Alunos</h1>
-    
             <table class="grades" cellspacing=0>
                 <tr>
                 	<th>Número</th>
@@ -31,7 +21,7 @@
                 	<td th:text = "${indexStat.count}"></td>
                     <td th:text = "${discente.nome}"></td>
                     <td th:text = "${discente.matricula}"></td>
-                    <td><a th:href = "@{__${#httpServletRequest.requestURI}__/__${discente.matricula}__}">Inserir Notas</a></td>
+                    <td><a th:href = "@{notas/__${discente.matricula}__}">Inserir Notas</a></td>
                 </tr>
             </table>
         </div>

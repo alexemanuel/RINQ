@@ -52,8 +52,17 @@ document.getElementById('choice').addEventListener('change', () => {
         
         document.getElementById('siape').required = true;
         document.getElementById('subject').required = true;
-        
-        
-    
     }
 });
+
+
+const choiceDocente  = document.getElementById("choice");
+const choiceDiscente = document.getElementById("choice2");
+const cursoSelect = document.getElementById("curso");
+const cadeiraSelect = document.getElementById("cadeira")
+
+choiceDocente.addEventListener("click", function() {
+		cursoSelect.style.width = '290px'; 
+		cadeiraSelect.style.width = '290px';
+})
+choiceDiscente.addEventListener("click", function() {cursoSelect.style.width = '605px'})

@@ -57,7 +57,10 @@
             <div class="field-group">
                 <div class="field">
                     <label for="curso">Curso</label>
-                    <select id = "curso" name = "curso" th:field = "*{nomeCurso}" required></select>
+                    <select id = "curso" name = "curso" th:field = "*{abreviacaoCurso}" onchange = "changeSubjects()" required>
+			            <option th:value = "ADS">Análise e Desenvolvimento de Sofware</option>
+			            <option th:value = "MSI">Manutenção e Suporte em Informática</option>                    
+			        </select>
                     <span class="error"></span>
                 </div>
 
@@ -80,6 +83,9 @@
             <footer>
             	<div th:if = "${param.error}" class = "register_error">
             		<p>Usuário já cadastrado</p>
+            	</div>
+            	<div th:if = "${param.sucess}" class = "register_sucess">
+            		<p>Usuário cadastrado com sucesso</p>
             	</div>
             </footer>
         	 <input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">

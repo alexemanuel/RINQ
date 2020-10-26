@@ -55,10 +55,11 @@
         }
       #botao{
     	margin-top:20px;
-	position: absolute;
+		position: absolute;
         top:300px;
         margin-left:-50px;
-	width:80px;
+		width:80px;
+	    height: 30px;
         font: bold 17px/45px;
         padding: 1px;
         color: white;

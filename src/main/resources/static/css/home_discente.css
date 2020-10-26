@@ -22,7 +22,6 @@ body{
         box-shadow: 1px 0px 3px #A9A9A9;
         color:#555555;
 
-
      }
      #logo{
      margin-left:350px;
@@ -32,48 +31,30 @@ body{
      }
       #sair{
       position: absolute;
-       top:25px;
-     margin-left:750px;
+      top:25px;
+      margin-left:750px;
      }
 
-
-       #chamada1{
+       #boletim{
      position: absolute;
      margin-left:10px;
       top:150px;
      }
-      #boletim1{
-     position: absolute;
-     margin-left:10px;
-      top:220px;
-     }
+
      .texto-boletim{
      position: absolute;
      margin-left:70px;
-      top:220px;
-      font: bold 17px/45px sans-serif ;
-      color:#555555;
-      text-decoration:none;
-     }
-     .texto-chamada{
-     position: absolute;
-     margin-left:70px;
       top:150px;
       font: bold 17px/45px sans-serif ;
       color:#555555;
       text-decoration:none;
      }
-     #messagem-chamada{
+     #messagem-boletim{
      position: absolute;
      margin-left:70px;
       top:170px;
       font: bold 12px/45px sans-serif ;
       color:#555555;
      }
-      #messagem-boletim{
-     position: absolute;
-     margin-left:70px;
-     top:240px;
-     font: bold 12px/45px sans-serif ;
-      color:#555555;
-     }
+
+

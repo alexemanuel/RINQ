@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class MatriculaGenerator {
 	
-	private static final String templateMatricula = "%d%sPL%04d";
+	private static final String templateMatricula = "%d%s%sPL%04d";
 	
-	public static String generateMatricula(String course, int code) {
+	public static String generateMatricula(String courseInitials, int code) {
 		int year = getYear();
 		int semester = getSemester();
 		
-		return String.format(templateMatricula, year, semester, code);
+		return String.format(templateMatricula, year, semester, courseInitials, code);
 	}
 	
 	private static int getYear() {

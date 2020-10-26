@@ -63,21 +63,22 @@ public class CadastroController {
 	@PostMapping("/cadastro")
 	public String registeUser(@ModelAttribute CadastroDTO DTO, Model model) throws MessagingException, IOException {
 		String userFuncao = DTO.getFuncao(); // User's Role (Docente, Discente, Administrador)
-		
-				
+			
 		if(usuarioRepository.existsByCpf(DTO.getCpf())) {
 			return "redirect:/cadastro?error";
 		
 		}else {			
-			DTO.setCurso(cursoRepository.findByNome(DTO.getNomeCurso()));
+			DTO.setCurso(cursoRepository.findByAbreviacao(DTO.getAbreviacaoCurso()));
 			DTO.setDisciplina(disciplinaRepository.findByNome(DTO.getNomeDisciplina()));
 			
 			Curso curso = DTO.getCurso();
 			
 			if(userFuncao.equals("discente")) {
-				int discenteNumber = discenteRepository.countByCurso(curso);	
 				
-				String matricula = MatriculaGenerator.generateMatricula(curso.getNome(), discenteNumber);	
+				int discenteNumber = discenteRepository.countByCurso(curso);
+				String abreviacaoCurso = curso.getAbreviacao();
+				
+				String matricula = MatriculaGenerator.generateMatricula(abreviacaoCurso, discenteNumber);	
 				DTO.setMatricula(matricula);
 				
 				Discente discente = new Discente(DTO);			
@@ -106,6 +107,6 @@ public class CadastroController {
 		}
 		
 		model.addAttribute("DTO", cadastroDTO);
-		return "cadastro"; 
+		return "redirect:/cadastro?sucess"; 
 	}
 }

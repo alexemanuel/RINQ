@@ -22,7 +22,7 @@ public class Discente extends Usuario implements Comparable<Discente>{
 	@JoinColumn(name = "id_curso")
 	private Curso curso;
 	
-	@Column(unique = true, nullable = false, length = 11)
+	@Column(unique = true, nullable = false, length = 14)
 	private String matricula;
 
 	@ManyToMany(mappedBy = "discentes")

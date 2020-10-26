@@ -17,9 +17,7 @@ public class Aula {
     private Date data;
 
     private String observacao;
-    @Column(nullable = false)
-    private Integer quantidade;
-
+    
     @ManyToOne
     @JoinColumn(name = "siape_docente", referencedColumnName = "siape")
     private Docente docente;
@@ -55,14 +53,6 @@ public class Aula {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
     }
     
     public Disciplina getDisciplina() {

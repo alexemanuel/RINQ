@@ -1,78 +1,70 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-br" xmlns:th = "https://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th ="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8">
         <title>chamada</title>
-
-        <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
-        <link href= "css/bootstrap.min.css" rel= "stylesheet" type= "text/css" />
-        <script type= "text/javascript" src= "javascript/jquery-3.4.1.min.js"></script>
-        <script type= "text/javascript" src= "javascript/bootstrap.min.js"></script>
-        <script type= "text/javascript" src= "javascript/jquery.mask.min.js"></script>
-
-        <link rel="stylesheet" type="text/css" href="css/chamada.css">
-
+        <link rel="stylesheet"  type="text/css" href="/css/chamada.css">
     </head>
     <body>
 
-    <form method="post" action="chamada">
+    <form method="post" action="/chamada">
         <div id="login_box">
-
             <div id="login_box_label">
                 <div id="home">
                     <a href="home">
                         <img src="images/seta_icon.png" style="width:30px;height:30px;"/>
                     </a>
                 </div>
-                <div id="prof">
-                    Professor
-                </div>
-
+                <div id="prof" th:text = "|Professor(a) ${aulaDTO.aula.docente.nome}|"></div>
             </div>
 
             <div class="input-div" id="imput_data">
                 Data
-                <input name= "Data"  id="date"  type="date" value=""  onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                <input name= "Data"  id="date"  type="date" value=""  th:field = "*{aulaDTO.stringData}" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
             </div>
             <div id="botoes">
                 <button type="submit" id="botao1" >Registrar</button>
             </div>
             <div class="input-div-obs" id="imput_observaçao">
                 <label id="label_obs">Observação</label>
-                <textarea style="resize: none" name= "Descrição"  class= "form-control" id= "id_obs" required= "required"  ></textarea>
+                <textarea style="resize: none" name= "Descrição"  class= "form-control" id= "id_obs" th:field = "*{aulaDTO.aula.observacao}" required= "required"  ></textarea>
             </div>
-
+            <input type = "hidden" th:field = "*{aulaDTO.aula.disciplina}">
+          	<input type = "hidden" th:field = "*{aulaDTO.aula.docente}">    
+            
             <div id="chamada">
                 <img src="images/chamada_layout.png" style="width:210px;height:80px;"/>
             </div>
             <div style="overflow: auto" id="tabela_box">
                 <table id="tabela" border="1" cellpadding="4px" style="table-layout: fixed; width: 100%" >
+                    <thead>
                     <tr>
                         <th>Número</th>
                         <th>Matrícula</th>
                         <th>Nome </th>
                         <th>Presença </th>
-					</tr>
-					
-                    <tr th:each = "estudante, indexStat : ${students}">
-                    	<td th:text = "${indexStat.count}"></td>
-                    	<td th:text = "${estudante.matricula}"></td>
-                    	<td th:text = "${estudante.nome}"></td>
-						<td>
-                            <select  name="presença">
-                                <option value="presente">Presente</option>
-                                <option value="1f">1 Falta</option>
-                                <option value="2f">2 Falta</option>
-                            </select>
-                        </td>
                     </tr>
-            </table>
+                    </thead>
+                    <tbody>            
+	                    <tr th:each = "discente, indexStat : ${discentes}">
+	                    	<td th:text = "${indexStat.count}"></td>
+	                    	<td th:text = "${discente.matricula}"></td>
+	                    	<td th:text = "${discente.nome}"></td>
+							<td>
+	                            <select  name="presença" th:field = "${faltasDTO.faltas[__${indexStat.index}__].quantidadeFaltas}">
+	                                <option th:value="0">Presente</option>
+	                                <option th:value="1">1 Falta</option>
+	                                <option th:value="2">2 Falta</option>
+	                            </select>
+	                            <input type = "hidden" th:field = "${faltasDTO.faltas[__${indexStat.index}__].discente}">
+								<input type = "hidden" th:field = "${faltasDTO.faltas[__${indexStat.index}__].disciplina}">
+	                        </td>
+                    </tbody>                
+                </table>
             </div>
-            </div>
-         	 <input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">
-            
+        </div>
+   	 	<input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">          
     </form>
-
     </body>
     <script type="text/javascript" src="javascript/data.js"></script>
 </html>

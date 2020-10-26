@@ -12,7 +12,7 @@ import com.rinq.models.Falta;
 @Repository
 public interface FaltaRepository extends CrudRepository<Falta, Long> {
 
-    List<Falta> findByDiscente(Discente discente);
+    List<Falta> findByDiscenteAndDisciplina(Discente discente, Disciplina disciplina);
     
     int countByDiscenteAndDisciplina(Discente discente, Disciplina disciplina);
 }

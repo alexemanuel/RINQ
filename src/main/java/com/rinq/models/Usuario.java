@@ -17,10 +17,11 @@ public class Usuario implements Serializable{
 	private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@Id
+	@Column(length = 14)
 	private String login;
 	@Column(nullable = false, length = 14)
 	private String cpf;
-	@Column(nullable = false, length = 60)
+	@Column(nullable = true, length = 60)
 	private String senha;
 	@Column(nullable = false, length = 100)
 	private String nome;

@@ -9,4 +9,6 @@ import com.rinq.models.Curso;
 public interface CursoRepository extends CrudRepository<Curso, Long> {
 	
 	Curso findByNome(String nome);
+	
+	Curso findByAbreviacao(String abreviacao);
 }

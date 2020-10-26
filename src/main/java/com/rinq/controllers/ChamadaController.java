@@ -24,7 +24,7 @@ import com.rinq.service.DTO.AulaDTO;
 import com.rinq.service.DTO.FaltaDTO;
 
 @Controller
-public class FaltasController {
+public class ChamadaController {
 
 	@Autowired
 	AulaDTO aulaDTO;
@@ -72,7 +72,7 @@ public class FaltasController {
 	public String manageAbsences(AulaDTO aulaDTO, FaltaDTO faltaDTO) {
 		List<Falta> faltas = faltaDTO.getFaltas();
 		Aula aula = aulaDTO.getAula();
-		
+				
 		// Set faltas in aula and aula in faltas
 		faltas.forEach(falta -> falta.setAula(aula));
 		aula.setFaltas(faltas);
