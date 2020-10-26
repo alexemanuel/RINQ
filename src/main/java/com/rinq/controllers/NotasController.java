@@ -18,14 +18,18 @@ import com.rinq.repositories.DiscenteRepository;
 import com.rinq.repositories.DisciplinaRepository;
 import com.rinq.repositories.DocenteRepository;
 import com.rinq.repositories.FaltaRepository;
-import com.rinq.repositories.ProvaRepository;
+import com.rinq.repositories.NotasRepository;
 import com.rinq.service.DTO.BoletimDTO;
+import com.rinq.service.DTO.NotasDTO;
+import com.rinq.service.DTO.NotasDTO;
 
 @Controller
 public class NotasController {
 	
 	@Autowired
 	BoletimDTO boletimDTO;
+	@Autowired
+	NotasDTO notasDTO;
 	
 	@Autowired
 	DiscenteRepository discenteRepository;
@@ -36,7 +40,7 @@ public class NotasController {
 	@Autowired
 	DisciplinaRepository disciplinaRepository;
 	@Autowired
-	ProvaRepository provaRepository;
+	NotasRepository notasRepository;
 
 	@GetMapping("/boletim")
 	public String showBoletim(Model model, Principal principal) {
@@ -56,39 +60,44 @@ public class NotasController {
 	}
 	
 	@GetMapping("/notas")
-	public String redirectToDisciplineDiscentesList(Principal principal) {		
+	public String showDisciplineDiscentes(Principal principal, Model model) {		
 		Docente docente = docenteRepository.findByLogin(principal.getName());
 		Disciplina disciplina = docente.getDisciplina();
 		
-		return String.format("redirect:/notas/%s", disciplina);
-	}
-	
-	@GetMapping("/notas/{disciplina}")
-	public String showDisciplineDiscentes(@PathVariable("disciplina") String nomeDisciplina, Model model) {
-		Disciplina disciplina = disciplinaRepository.findByNome(nomeDisciplina);
 		List<Discente> discentes = disciplina.getDiscentes();
-		
 		model.addAttribute("discentes", discentes);
 		
 		return "/alunos";
 	}
 	
-	@GetMapping("/notas/{disciplina}/{matricula}")
-	public String showDiscenteGrades(@PathVariable("disciplina") String nomeDisciplina, @PathVariable("matricula") String matricula, Model model) {
-		Disciplina disciplina = disciplinaRepository.findByNome(nomeDisciplina);
+	@GetMapping("/notas/{matricula}")
+	public String showDiscenteGrades(@PathVariable("matricula") String matricula, Model model, Principal principal) {
+		
 		Discente discente = discenteRepository.findByMatricula(matricula);
+		Docente docente = docenteRepository.findByLogin(principal.getName());
+		Disciplina disciplina = docente.getDisciplina();
+
+		Notas notas = notasRepository.findByDiscenteAndDisciplina(discente, disciplina);
 		
-		Notas notas = provaRepository.findByDiscenteAndDisciplina(discente, disciplina);	
+		if(notas == null) {
+			notas = new Notas(discente, disciplina);
+		}
 		
-		model.addAttribute("notas", notas);
+		notasDTO.initializeNotasDTO(notas);
+		model.addAttribute("DTO", notasDTO);
 		
-		return "";
+		return "notas_discente";
 	}
 	
-	@PostMapping("/notas/{disciplina}/{matricula}")
-	public String updateDiscenteGrades(Notas notas) {
-		Discente discente = notas.getDiscente();
-		discenteRepository.save(discente);
+	@PostMapping("/notas/{matricula}")
+	public String updateDiscenteGrades(NotasDTO DTO, Principal principal) {
+		Discente discente = DTO.getDiscente();
+		Disciplina disciplina = DTO.getDisciplina();
+
+		notasRepository.deleteByDiscenteAndDisciplina(discente, disciplina);
+
+		Notas notas = DTO.getNotas();
+		notasRepository.save(notas);
 		
 		return "redirect:/home";
 	}

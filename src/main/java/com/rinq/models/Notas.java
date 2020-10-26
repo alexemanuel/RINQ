@@ -9,12 +9,15 @@ public class Notas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Float prova1;
-    private Float recuperacao1;
-    private Float prova2;
-    private Float recuperacao2;
+    private Float prova1Semestre1;
+    private Float prova2Semestre1;
+    private Float recuperacaoSemestre1;
+    private Float mediaSemestre1;
+    private Float prova1Semestre2;
+    private Float prova2Semestre2;
+    private Float mediaSemestre2;
+    private Float recuperacaoSemestre2;
     private Float mediaFinal;
-    private Float recuperacaoFinal;
 
     @ManyToOne
     @JoinColumn(name = "matricula_discente", referencedColumnName = "matricula")
@@ -25,6 +28,11 @@ public class Notas {
     private Disciplina disciplina;
 
     public Notas() {}
+    
+    public Notas(Discente discente, Disciplina disciplina) {
+    	this.discente = discente;
+    	this.disciplina = disciplina;
+    }
 
     public Long getId() {
         return id;
@@ -32,54 +40,6 @@ public class Notas {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Float getProva1() {
-        return prova1;
-    }
-
-    public void setProva1(Float prova1) {
-        this.prova1 = prova1;
-    }
-
-    public Float getRecuperacao1() {
-        return recuperacao1;
-    }
-
-    public void setRecuperacao1(Float recuperacao1) {
-        this.recuperacao1 = recuperacao1;
-    }
-
-    public Float getProva2() {
-        return prova2;
-    }
-
-    public void setProva2(Float prova2) {
-        this.prova2 = prova2;
-    }
-
-    public Float getRecuperacao2() {
-        return recuperacao2;
-    }
-
-    public void setRecuperacao2(Float recuperacao2) {
-        this.recuperacao2 = recuperacao2;
-    }
-
-    public Float getMediaFinal() {
-        return mediaFinal;
-    }
-
-    public void setMediaFinal(Float mediaFinal) {
-        this.mediaFinal = mediaFinal;
-    }
-
-    public Float getRecuperacaoFinal() {
-        return recuperacaoFinal;
-    }
-
-    public void setRecuperacaoFinal(Float recuperacaoFinal) {
-        this.recuperacaoFinal = recuperacaoFinal;
     }
 
     public Discente getDiscente() {
@@ -97,4 +57,76 @@ public class Notas {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
+
+	public Float getProva1Semestre1() {
+		return prova1Semestre1;
+	}
+
+	public void setProva1Semestre1(Float prova1Semestre1) {
+		this.prova1Semestre1 = prova1Semestre1;
+	}
+
+	public Float getProva2Semestre1() {
+		return prova2Semestre1;
+	}
+
+	public void setProva2Semestre1(Float prova2Semestre1) {
+		this.prova2Semestre1 = prova2Semestre1;
+	}
+
+	public Float getRecuperacaoSemestre1() {
+		return recuperacaoSemestre1;
+	}
+
+	public void setRecuperacaoSemestre1(Float recuperacaoSemestre1) {
+		this.recuperacaoSemestre1 = recuperacaoSemestre1;
+	}
+	
+	public Float getProva1Semestre2() {
+		return prova1Semestre2;
+	}
+
+	public void setProva1Semestre2(Float prova1Semestre2) {
+		this.prova1Semestre2 = prova1Semestre2;
+	}
+
+	public Float getProva2Semestre2() {
+		return prova2Semestre2;
+	}
+
+	public void setProva2Semestre2(Float prova2Semestre2) {
+		this.prova2Semestre2 = prova2Semestre2;
+	}
+
+	public Float getRecuperacaoSemestre2() {
+		return recuperacaoSemestre2;
+	}
+
+	public void setRecuperacaoSemestre2(Float recuperacaoSemestre2) {
+		this.recuperacaoSemestre2 = recuperacaoSemestre2;
+	}
+
+	public Float getMediaFinal() {
+		return mediaFinal;
+	}
+
+	public void setMediaFinal(Float mediaFinal) {
+		this.mediaFinal = mediaFinal;
+	}
+
+	public Float getMediaSemestre1() {
+		return mediaSemestre1;
+	}
+
+	public void setMediaSemestre1(Float mediaSemestre1) {
+		this.mediaSemestre1 = mediaSemestre1;
+	}
+
+	public Float getMediaSemestre2() {
+		return mediaSemestre2;
+	}
+
+	public void setMediaSemestre2(Float mediaSemestre2) {
+		this.mediaSemestre2 = mediaSemestre2;
+	}
 }

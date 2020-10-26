@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="/css/notas_discente.css">
+
+	<script src = "/javascript/notas.js" defer></script>
+
+    <title>Notas</title>
+</head>
+<body>
+    <form th:method = "post" th:action = "@{__${#httpServletRequest.requestURI}__}">
+        <h1>NOTAS</h1>
+        <h3>1ª Unidade</h3>
+
+        <div class="wrapper">
+            <div class="field-group">
+                <h4>Prova 1</h4>
+                <label for="note">Nota</label>
+            <input type="text" id="primeira-nota-semestre1" class = "primeiro-semestre" 
+             th:field = "*{DTO.prova1Semestre1}" th:value = "*{DTO.prova1Semestre1}" onkeypress=" return isValidGrade(event);" name="note">
+            </div>
+                   
+            <div class="field-group">
+                <h4>Prova 2</h4>
+                <label for="note">Nota</label>
+                <input type="text" id="segunda-nota-semestre1" value="" class = "primeiro-semestre" 
+                th:field = "*{DTO.prova2Semestre1}" th:value = "*{DTO.prova2Semestre1}" onkeypress=" return isValidGrade(event);" name="note">
+            </div>
+                        
+ 		</div>           
+ 
+        <div class="wrapper">    
+            <div class="field-group1">
+                <h4>Recuperação</h4>
+                <label for="recuperacao">Nota</label>
+                <input type="text" disabled th:field = "*{DTO.recuperacaoSemestre1}" th:value = "*{DTO.recuperacaoSemestre1}"
+                 onkeypress=" return isValidGrade(event);" id="recuperacao-semestre1" name="recuperacao">
+            </div>
+        </div>		        
+     
+        <div class="note-wrapper">
+            <h5>1ª Nota</h5>
+            <div class="field"><p id="media-semestre1" th:text = "${DTO.mediaSemestre1}"></p></div>
+            <input type = "hidden" th:field = "*{DTO.mediaSemestre1}">
+        </div>
+        
+        <h3>2ª Unidade</h3>
+
+        <div class="wrapper">
+            <div class="field-group">
+                <h4>Prova 1</h4>
+                <label for="note">Nota</label>
+                <input type="text" id="primeira-nota-semestre2" th:field = "*{DTO.prova1Semestre2}" 
+                th:value = "${DTO.prova1Semestre2}" onkeypress=" return isValidGrade(event);" value="" name="note">
+            </div>
+
+            
+            <div class="field-group">
+                <h4>Prova 2</h4>
+                <label for="note">Nota</label>
+                <input type="text" id="segunda-nota-semestre2" th:field = "*{DTO.prova2Semestre2}" 
+                th:value = "${DTO.prova2Semestre2}" onkeypress=" return isValidGrade(event);" value="" name="note">
+            </div>
+        </div>
+     
+        <div class="wrapper">
+            <div class="field-group1">
+                <h4>Recuperação</h4>
+                <label for="recuperacao">Nota</label>
+                <input type="text" disabled id="recuperacao-semestre2" 
+                th:field = "*{DTO.recuperacaoSemestre2}" onkeypress=" return isValidGrade(event);" 
+                th:value = "*{DTO.recuperacaoSemestre2}" name="recuperacao">
+            </div>
+        </div>
+    
+        <div class="note-wrapper">
+            <h5>2ª Nota</h5>
+            <div class="field"><p id="media-semestre2" th:text = "${DTO.mediaSemestre2}"></p></div>
+			<input type = "hidden" th:field = "*{DTO.mediaSemestre2}">        
+        </div>
+
+        <div class="note-wrapper">
+            <h4>Média Bimestral</h4>
+            <div class="field"><p id="media-bimestral" th:text = "${DTO.mediaFinal}"></p></div>
+            <input type = "hidden" th:field = "*{DTO.mediaFinal}">        
+        </div>
+      
+        <div class="Btn">
+            <button type="submit"class="btn-2" id="botao-1" >Registrar</button>
+        </div> 
+        
+        <input type = "hidden" th:field = "*{DTO.discente}">
+        <input type = "hidden" th:field = "*{DTO.disciplina}">
+     	<input type = "hidden" th:name = "${_csrf.parameterName}" th:value = "${_csrf.token}">        
+    </form>  
+</body>
+</html>
